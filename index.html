@@ -177,16 +177,16 @@
         /* PREVIEW FRAME WRAPPERS (LAMBI VERTICAL STYLING DESIGN BY DEFAULT) */
         .media-preview-box {
             width: 100%;
-            height: 420px; /* Default Lambi Video Track Dimensions */
+            height: 420px; 
             background: #000000;
             position: relative;
             overflow: hidden;
             transition: height 0.3s ease;
         }
         
-        /* SHORTS FRAME (MOBILE SCREEN TYPE DIMENSIONS - VERTICAL MEDIUM THORA BARA SIZE) */
+        /* SHORTS FRAME (MOBILE SCREEN TYPE DIMENSIONS) */
         .media-card.short-layout-type .media-preview-box {
-            height: 520px; /* Thora Bara Mobile Layout Aspect Ratio Footprint */
+            height: 520px; 
         }
 
         .media-preview-box video {
@@ -299,7 +299,7 @@
             cursor: pointer;
         }
 
-        /* THREE DOT CONTROL HUDS (EXCLUSIVE SYSTEM DISPLAYS) */
+        /* THREE DOT CONTROL HUDS */
         .three-dots-trigger-node {
             position: absolute;
             top: 10px;
@@ -475,12 +475,11 @@
         let pendingUploadType = "";
         let selectedFileBlobUrl = "";
         
-        // REYOV LIVE RUNTIME LOCAL REGISTRIES (STRICT INITIAL STATS MAPS TO 0)
+        // REYOV LIVE RUNTIME LOCAL REGISTRIES (LOADED FROM LOCALSTORAGE SYSTEM MATRIX)
         let dynamicLocalMemoryDB = []; 
         let globalSystemLikesCount = 0;
         let globalSystemSubsCount = 0;
 
-        // SEPARATE DUAL BUFFER STORAGE OBJECT FOR VIDEO ADMINISTRATION HUD ACTIONS
         let editStageBufferState = {
             targetItemId: null,
             tempTitle: "",
@@ -488,7 +487,6 @@
             tempThvipUrl: ""
         };
 
-        // TRACK REGISTRY FOR ADD / REMOVE DYNAMIC COUNTERS CONSOLE CONTEXTS
         let userEngagementRegistry = {
             likesTrack: {},
             subsTrack: {}
@@ -501,7 +499,44 @@
 
         let touchStartCoordX = 0, touchEndCoordX = 0, touchStartCoordY = 0, touchEndCoordY = 0;
 
+        // HIGH PERFORMANCE LOCALSTORAGE INITIALIZATION ENGINE
+        function initLocalStorageDatabaseEngine() {
+            try {
+                if (localStorage.getItem('reyov_db')) {
+                    dynamicLocalMemoryDB = JSON.parse(localStorage.getItem('reyov_db'));
+                }
+                if (localStorage.getItem('reyov_global_likes')) {
+                    globalSystemLikesCount = parseInt(localStorage.getItem('reyov_global_likes'));
+                }
+                if (localStorage.getItem('reyov_global_subs')) {
+                    globalSystemSubsCount = parseInt(localStorage.getItem('reyov_global_subs'));
+                }
+                if (localStorage.getItem('reyov_engagement_registry')) {
+                    userEngagementRegistry = JSON.parse(localStorage.getItem('reyov_engagement_registry'));
+                }
+                if (localStorage.getItem('reyov_profile_config')) {
+                    profileConfigState = JSON.parse(localStorage.getItem('reyov_profile_config'));
+                }
+            } catch (e) {
+                console.error("Local Storage sync lock offline", e);
+            }
+        }
+
+        function forceCommitStorageSynchronizer() {
+            try {
+                localStorage.setItem('reyov_db', JSON.stringify(dynamicLocalMemoryDB));
+                localStorage.setItem('reyov_global_likes', globalSystemLikesCount.toString());
+                localStorage.setItem('reyov_global_subs', globalSystemSubsCount.toString());
+                localStorage.setItem('reyov_engagement_registry', JSON.stringify(userEngagementRegistry));
+                localStorage.setItem('reyov_profile_config', JSON.stringify(profileConfigState));
+            } catch (e) {
+                console.error("Data commit failed", e);
+            }
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
+            initLocalStorageDatabaseEngine(); // Pull persistent states instantly before layout paint
+            
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
                 if (splash) {
@@ -515,7 +550,6 @@
             setupFileSelectionTriggers();
         });
 
-        // REBUILD CORE ENGINE RENDER STAGES (SUPPORTS NATIVE VERTICAL OVERRIDE PIPELINES)
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short'];
             
@@ -524,7 +558,6 @@
                 if (!targetGrid) return;
                 targetGrid.innerHTML = '';
 
-                // Strip and exclude layout elements marked under private status mapping constraints
                 let filtered = dynamicLocalMemoryDB.filter(item => {
                     if (item.visibility === 'private') return false;
                     if (cat === 'all') return true;
@@ -542,7 +575,6 @@
                 } else {
                     filtered.forEach(item => {
                         const card = document.createElement('div');
-                        // Inject unique formatting styles for structural shorts classification tracks
                         card.className = `media-card ${item.type === 'short' ? 'short-layout-type' : ''}`;
                         
                         const isLiked = userEngagementRegistry.likesTrack[item.id] ? 'active-fired' : '';
@@ -560,7 +592,6 @@
                             `;
                         });
 
-                        // 3 DOT MANAGEMENT SYSTEM DROPPED EXCLUSIVELY TO CONTENT AUTHOR SIGNALS ONLY
                         let threeDotsMenuHTML = `<div class="three-dots-trigger-node" onclick="openVideoStructuralAdminHUD(${item.id})">⋮</div>`;
 
                         card.innerHTML = `
@@ -616,19 +647,16 @@
             if (overlay) overlay.style.display = 'none';
         }
 
-        // CONTROL SCREEN MULTI BOUNDS EXPAND CHANNELS
         function modifyVideoScreenBounds(itemId, modeType) {
             const wrapperBox = document.getElementById(`box-wrapper-${itemId}`);
-            const videoElement = document.getElementById(`video-core-node-${itemId}`);
+            const videoElement = document.getElementById('video-core-node-' + itemId);
             let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
             if (!wrapperBox) return;
 
             if (modeType === 'big') {
-                // Expand boundaries to take extensive space layout parameters
                 wrapperBox.style.height = "720px";
                 if(videoElement) videoElement.style.objectFit = "contain";
             } else if (modeType === 'small') {
-                // Revert frame measurements back to standard configurations safely
                 if (itemObj && itemObj.type === 'short') {
                     wrapperBox.style.height = "520px";
                 } else {
@@ -638,42 +666,38 @@
             }
         }
 
-        // TOGGLE ADD/REMOVE COUNTER ACTIONS SYSTEM LOGICS
         function toggleCardLikeExecutionState(itemId, elementNode) {
             let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
             if (!itemObj) return;
 
             if (userEngagementRegistry.likesTrack[itemId]) {
-                // User clicked again -> REMOVE LIKE CONTEXT (-1)
                 itemObj.likes -= 1;
                 globalSystemLikesCount -= 1;
                 userEngagementRegistry.likesTrack[itemId] = false;
                 elementNode.classList.remove('active-fired');
             } else {
-                // Add first time initial counter log (+1)
                 itemObj.likes += 1;
                 globalSystemLikesCount += 1;
                 userEngagementRegistry.likesTrack[itemId] = true;
                 elementNode.classList.add('active-fired');
             }
             document.getElementById(`like-counter-view-${itemId}`).innerText = itemObj.likes;
+            forceCommitStorageSynchronizer(); // Hot persistent save sync
         }
 
         function toggleCardSubsExecutionState(itemId, elementNode) {
             if (userEngagementRegistry.subsTrack[itemId]) {
-                // User clicked again -> REMOVE SUBSCRIBER RECORD MATRIX (-1)
                 globalSystemSubsCount -= 1;
                 userEngagementRegistry.subsTrack[itemId] = false;
                 elementNode.classList.remove('active-fired');
             } else {
-                // Add unique activation instance (+1)
                 globalSystemSubsCount += 1;
                 userEngagementRegistry.subsTrack[itemId] = true;
                 elementNode.classList.add('active-fired');
             }
+            forceCommitStorageSynchronizer(); // Hot persistent save sync
         }
 
-        // ROUTE LIVE GLOBAL BROADCAST FEED ON THE COMMENT MODULE
         function dispatchGlobalCommentBroadcast(itemId) {
             const inputField = document.getElementById(`comment-input-field-${itemId}`);
             const textData = inputField.value.trim();
@@ -686,11 +710,11 @@
                     text: textData
                 });
                 inputField.value = "";
-                rebuildStratifiedGrids(); // Hot reload synchronization step to force instant updates
+                forceCommitStorageSynchronizer();
+                rebuildStratifiedGrids(); 
             }
         }
 
-        // CONTROL TOUCH CAPABILITIES
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
             viewArea.addEventListener('touchstart', (e) => {
@@ -726,7 +750,6 @@
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        // DEVICE SELECTION HANDLERS
         function setupFileSelectionTriggers() {
             const fileSelector = document.getElementById('media-file-selector');
             fileSelector.addEventListener('change', function() {
@@ -743,7 +766,6 @@
             document.getElementById('media-file-selector').click();
         }
 
-        // ENCODING STEP MATRIX TIMER RENDER LAYOUT SCREENS
         function trigger10SecondDelayedDeployment(fileName) {
             const container = document.getElementById('modal-box-content');
             let counterTime = 10;
@@ -766,7 +788,6 @@
                 if (counterTime <= 0) {
                     clearInterval(clockInterval);
                     
-                    // Push live element model record definitions onto active pipeline trace storage slots
                     dynamicLocalMemoryDB.unshift({
                         id: Date.now(),
                         type: pendingUploadType,
@@ -778,18 +799,17 @@
                         comments: []
                     });
 
+                    forceCommitStorageSynchronizer(); // Commit new live stream safely
                     closeSystemModal();
                     rebuildStratifiedGrids();
                 }
             }, 1000);
         }
 
-        // MANAGEMENT OF 3 DOTS EXCLUSIVE OPERATION PANEL VIEW WINDOW HOOKS
         function openVideoStructuralAdminHUD(itemId) {
             const itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
             if (!itemObj) return;
 
-            // Load values to intermediate swap caches to support explicit save/dismiss routines
             editStageBufferState.targetItemId = itemId;
             editStageBufferState.tempTitle = itemObj.title;
             editStageBufferState.tempVisibility = itemObj.visibility;
@@ -800,7 +820,6 @@
 
         function renderActiveEditHUDStructure() {
             const container = document.getElementById('modal-box-content');
-            
             const isPublishSelected = editStageBufferState.tempVisibility === 'publish' ? 'selected-status' : '';
             const isPrivateSelected = editStageBufferState.tempVisibility === 'private' ? 'selected-status' : '';
 
@@ -860,7 +879,6 @@
             }
         }
 
-        // RE-CONFIRMATION STAGE BALANCERS BEFORE COMMITTING DATA TO DB MATRIX RECS
         function triggerSaveConfirmationDialog() {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
@@ -883,6 +901,7 @@
                 itemObj.visibility = editStageBufferState.tempVisibility;
                 itemObj.thvip = editStageBufferState.tempThvipUrl;
             }
+            forceCommitStorageSynchronizer(); // Lock and commit data to permanent browser tracks
             closeSystemModal();
             rebuildStratifiedGrids();
         }
@@ -902,7 +921,6 @@
             `;
         }
 
-        // ACCOUNT STUDIO CONTROLLER PANELS
         function openProfileStudioPanel() {
             const container = document.getElementById('modal-box-content');
             let uploadedHistoryHTML = "";
@@ -969,6 +987,7 @@
                     profileConfigState.picData = e.target.result;
                     const liveAvatar = document.getElementById('panel-avatar-img');
                     if (liveAvatar) liveAvatar.src = e.target.result;
+                    forceCommitStorageSynchronizer();
                     rebuildStratifiedGrids(); 
                 };
                 reader.readAsDataURL(inputNode.files[0]);
@@ -979,6 +998,7 @@
             const cleanName = inputNode.value.trim();
             if (cleanName !== "") {
                 profileConfigState.name = cleanName;
+                forceCommitStorageSynchronizer();
                 const metaLabels = document.querySelectorAll('.media-meta');
                 metaLabels.forEach(lbl => {
                     lbl.innerText = "Author Channel: " + cleanName;
@@ -991,7 +1011,6 @@
             pendingUploadType = "";
         }
 
-        // DEV TOOLS DISABLER PROTECTION LOGICS
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
