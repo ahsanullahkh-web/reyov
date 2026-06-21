@@ -169,17 +169,25 @@
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
         }
         .media-preview-box {
             width: 100%;
-            height: 175px;
-            background: #111111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-weight: bold;
-            font-size: 14px;
+            height: 180px;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+        .media-preview-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .media-preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .media-info {
             padding: 12px;
@@ -193,6 +201,19 @@
         .media-meta {
             font-size: 11px;
             color: #666666;
+        }
+        .badge-type {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 800;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .empty-state-container {
@@ -210,7 +231,7 @@
             margin-bottom: 10px;
         }
 
-        /* POPUP MODAL ARCHITECTURE (ONLY FOR DIRECT UPLOADS) */
+        /* POPUP MODAL ARCHITECTURE */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -343,7 +364,7 @@
     <script>
         let activeTabIndex = 0;
         let activeUploadTargetType = "";
-        let dynamicLocalMemoryDB = []; // 100% Wiped Clean and Empty
+        let dynamicLocalMemoryDB = []; 
 
         let touchStartCoordX = 0;
         let touchEndCoordX = 0;
@@ -363,7 +384,7 @@
             setupTouchNavigationListeners();
         });
 
-        // GRID GENERATOR CORE ENGINE
+        // GRID GENERATOR ENGINE (FIXED TO PLAY ACTUAL VIDEOS/LINKS)
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short'];
             
@@ -389,13 +410,24 @@
                     filtered.forEach(item => {
                         const card = document.createElement('div');
                         card.className = 'media-card';
+                        
+                        let mediaElement = '';
+                        // Checking if url is a video format link
+                        if (item.url.match(/\.(mp4|webm|ogg)$/i) || item.url.includes('stream') || item.url.startsWith('data:video')) {
+                            mediaElement = `<video src="${item.url}" controls playsinline preload="metadata"></video>`;
+                        } else {
+                            // Uses a visual clean backup thumbnail container if link isn't directly a video format
+                            mediaElement = `<img src="${item.url}" alt="Thumbnail">`;
+                        }
+
                         card.innerHTML = `
-                            <div class="media-preview-box" style="background: ${item.type === 'video' ? '#1a1a1a' : '#2d141e'}">
-                                <span>${item.type.toUpperCase()} MOUNT</span>
+                            <div class="media-preview-box">
+                                <span class="badge-type">${item.type}</span>
+                                ${mediaElement}
                             </div>
                             <div class="media-info">
                                 <div class="media-title">${escapeSecurityHTML(item.title)}</div>
-                                <div class="media-meta">Broadcast Feed • Active Stream</div>
+                                <div class="media-meta">Broadcast Feed • Live Upload Track</div>
                             </div>
                         `;
                         targetGrid.appendChild(card);
@@ -449,7 +481,7 @@
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        // NO ACCOUNT REQUIRED - DIRECT UPLOAD TRIGGER SYSTEM
+        // DIRECT LIVE UPLOAD SYSTEM (FIXED URL SOURCE MAPPING)
         function triggerDirectUpload(targetType) {
             activeUploadTargetType = targetType;
             const container = document.getElementById('modal-box-content');
@@ -458,7 +490,11 @@
                 <div class="input-group">
                     <label class="input-label">Content Title Name</label>
                     <input type="text" id="upload-title-field" class="form-control" placeholder="Enter stream title heading...">
-                    <div class="error-box" id="upload-error-block">Parameter field cannot remain empty!</div>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Video URL / Link (Optional)</label>
+                    <input type="text" id="upload-url-field" class="form-control" placeholder="Paste .mp4 link or video track url...">
+                    <div class="error-box" id="upload-error-block">Title field cannot remain empty!</div>
                 </div>
                 <div class="modal-actions">
                     <button class="btn-block btn-cancel" onclick="closeSystemModal()">Discard</button>
@@ -470,6 +506,7 @@
 
         function executeContentPublish() {
             const titleIn = document.getElementById('upload-title-field').value.trim();
+            let urlIn = document.getElementById('upload-url-field').value.trim();
             const err = document.getElementById('upload-error-block');
 
             if (titleIn === "") {
@@ -477,10 +514,16 @@
                 return;
             }
 
+            // Fallback mock dynamic thumbnail if no URL provided
+            if (urlIn === "") {
+                urlIn = "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format&fit=crop";
+            }
+
             dynamicLocalMemoryDB.unshift({
                 id: Date.now(),
                 type: activeUploadTargetType,
-                title: titleIn
+                title: titleIn,
+                url: urlIn
             });
 
             activeUploadTargetType = "";
@@ -488,7 +531,7 @@
             rebuildStratifiedGrids();
         }
 
-        // PROFILE LAYOUT DESIGNED FOR MOBILE RESPONSIVENESS
+        // PROFILE LAYOUT 
         function openProfilePanelMobile() {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
@@ -515,7 +558,7 @@
             activeUploadTargetType = "";
         }
 
-        // ANTI-TAMPER DISCO INTERCEPT DETECTOR
+        // ANTI-TAMPER
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
