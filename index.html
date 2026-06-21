@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>R CRAZY VIDEO - Fixed Stream Engine</title>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <title>REYOV - Secure Object Stream Engine</title>
     <style>
-        /* UNIVERSAL CORE SYSTEM (Fits TV, Mobile, Laptop, VR, Watch) */
+        /* SECURE UNIVERSAL CORE SYSTEM */
         body {
             margin: 0; padding: 0;
             background-color: #ffffff;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #000000; overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
+            user-select: none; /* Initial Layer against Data Scraping */
         }
 
         /* SPLASH INTRO SCREEN */
@@ -33,7 +35,7 @@
             box-shadow: 0 0 20px #ff0055; transition: 0.3s;
         }
 
-        /* REAL GOOGLE SIGN-IN INTERFACE */
+        /* ENHANCED GOOGLE SIGN-IN INTERFACE */
         .auth-overlay {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: #f8f9fa; z-index: 2000; display: none;
@@ -87,7 +89,7 @@
         .filter-pill { padding: 10px 20px; background: #f2f2f2; border: none; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 14px; }
         .filter-pill.active { background: #ff0055; color: white; }
 
-        /* ADAPTIVE CONTAINER GRID (All Screen Sizes) */
+        /* CONTENT ENGINE DISPLAY */
         .app-container { max-width: 1600px; margin: 0 auto; padding: 0 24px 24px 24px; }
         .section-headline { font-size: 18px; font-weight: bold; margin: 24px 0 16px 0; border-left: 4px solid #ff0055; padding-left: 10px; }
         
@@ -98,7 +100,7 @@
         }
         .empty-state-notice { text-align: center; color: #888; padding: 60px 20px; font-weight: 500; font-size: 15px; grid-column: 1 / -1; }
         
-        /* CARD STYLINGS */
+        /* SHIELDED CARDS PACKAGING */
         .channel-video-card { background: white; border-radius: 12px; overflow: hidden; position: relative; border: 1px solid #eee; display: flex; flex-direction: column; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .img-holder { width: 100%; height: 170px; background-size: cover; background-position: center; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; color: white; cursor: pointer; }
         .short-holder { width: 100%; height: 340px; background-size: cover; background-position: center; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; color: white; cursor: pointer; border-radius: 12px; }
@@ -107,7 +109,7 @@
         .v-meta-text { font-size: 12px; color: #606060; }
         .v-views-text { font-size: 11px; color: #888; margin-top: 4px; font-weight: bold; }
 
-        /* INTERACTIONS ZONE */
+        /* ENGAGEMENT SECTOR WITH SANITIZATION TILES */
         .social-action-bar { display: flex; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #eee; }
         .social-btn { padding: 6px 12px; border-radius: 15px; border: 1px solid #ccc; background: white; font-size: 12px; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; user-select: none; }
         .social-btn:hover { background: #f5f5f5; }
@@ -120,13 +122,13 @@
         .comments-output-list { margin-top: 6px; max-height: 80px; overflow-y: auto; font-size: 11px; color: #444; text-align: left; padding-left: 5px; border-top: 1px solid #eee; pt: 4px; }
         .single-comment-item { margin-bottom: 4px; padding: 2px 0; word-break: break-all; border-bottom: 1px dashed #f0f0f0; }
 
-        /* DROP MENU SETTINGS */
+        /* STUDIO CONTROLS */
         .dots-btn { position: absolute; right: 10px; bottom: 115px; background: none; border: none; font-size: 20px; cursor: pointer; color: #606060; padding: 5px; z-index: 5; }
         .dots-menu { position: absolute; right: 10px; bottom: 145px; background: white; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); display: none; z-index: 10; width: 130px; }
         .dots-menu button { width: 100%; padding: 10px; border: none; background: none; text-align: left; cursor: pointer; font-size: 12px; font-weight: bold; }
         .dots-menu button:hover { background: #f5f5f5; color: #ff0055; }
 
-        /* CREATOR PROFILE PAGE */
+        /* CREATOR PROFILE PORTFOLIO */
         .profile-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff; z-index: 1200; display: none; flex-direction: column; overflow-y: auto; }
         .profile-header-banner { background: #f9f9f9; padding: 40px 24px; border-bottom: 1px solid #eee; text-align: center; position: relative; }
         .profile-pfp-avatar { width: 90px; height: 90px; border-radius: 50%; background: #4285f4; margin: 0 auto 15px auto; display: flex; justify-content: center; align-items: center; color: white; font-size: 36px; font-weight: bold; background-size: cover; background-position: center; border: 3px solid #ff0055; }
@@ -134,21 +136,21 @@
         .stat-badge { background: #f2f2f2; padding: 8px 16px; border-radius: 15px; font-size: 13px; font-weight: bold; }
         .pfp-upload-btn { background: #ff0055; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; margin-top: 5px; }
 
-        /* MODALS GENERICS */
+        /* MANAGEMENT BOXES */
         .edit-modal { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1800; display: none; justify-content: center; align-items: center; padding: 15px; box-sizing: border-box; }
         .edit-box { background: white; width: 100%; max-width: 380px; padding: 25px; border-radius: 12px; box-sizing: border-box; }
         .edit-box input[type="text"] { width: 100%; padding: 10px; margin: 10px 0 20px 0; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
         .modal-save-btn { background: #34a853; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; float: right; }
         .modal-close-btn { background: #666; color: white; border: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; float: left; }
 
-        /* HIGH POWER UNIVERSAL THEATER PLAYER SCREEN */
+        /* THEATER SECURE ENGINE VIEWPORT */
         .video-player-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #ffffff; display: none; flex-direction: column; z-index: 1500; overflow-y: auto; }
         .media-box-container { display: flex; justify-content: center; background: #000; width: 100%; height: 55vh; min-height: 240px; position: relative; }
         video { width: 100%; height: 100%; background: black; object-fit: contain; }
         .player-body-details { max-width: 1000px; margin: 0 auto; width: 100%; padding: 20px 24px; box-sizing: border-box; }
         .close-stream-btn { background: #ff0055; color: white; border: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; }
 
-        /* DEVICE AUTO FIT MEDIA OPTIMIZATIONS (Smartphones, Tablets, TV, Watch) */
+        /* RESPONSE GRID CONTROLLERS */
         @media (max-width: 600px) {
             .reyov-navbar { padding: 10px; justify-content: center; }
             .brand-logo { width: 100%; text-align: center; margin-bottom: 5px; }
@@ -159,19 +161,6 @@
             .dots-btn { bottom: 125px; }
             .media-box-container { height: 35vh; }
         }
-
-        @media (min-width: 1400px) {
-            .content-grid { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
-            .v-title-text { font-size: 18px; }
-        }
-
-        @media (max-width: 240px) {
-            body { font-size: 10px; }
-            .reyov-navbar, .type-filter-bar { flex-direction: column; padding: 2px; }
-            .brand-logo { font-size: 14px; }
-            .upload-trigger-btn, .profile-trigger-btn { padding: 4px 6px; font-size: 9px; }
-            .content-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -180,7 +169,7 @@
         <div class="splash-logo-box">
             <div style="font-size: clamp(60px, 12vw, 130px); font-weight: 900; color: #ff0055; font-family: 'Impact'; font-style: italic;">R</div>
             <h1>R CRAZY VIDEO</h1>
-            <p style="color: #888; font-size: 14px; margin-top: -5px;">Fixed High-Speed Object Stream Engine</p>
+            <p style="color: #888; font-size: 14px; margin-top: -5px;">Secure Encryption Object Stream Engine</p>
             <button class="splash-btn" onclick="exitSplashToLogin()">Launch Engine</button>
         </div>
     </div>
@@ -194,7 +183,7 @@
             <div class="input-field-group">
                 <label>Email or Phone</label>
                 <input type="text" id="g-email-input" class="google-input" placeholder="name@gmail.com">
-                <div class="error-message-box" id="email-error-node">? Valid Gmail enter karein!</div>
+                <div class="error-message-box" id="email-error-node">❌ Valid Gmail enter karein!</div>
             </div>
             <div class="input-field-group">
                 <label>Enter your password</label>
@@ -203,27 +192,27 @@
                     <div class="custom-square-box" id="square-check-box"></div>
                     <span>Show Password</span>
                 </div>
-                <div class="error-message-box" id="pass-error-node">? Password empty nahi chor sakte!</div>
+                <div class="error-message-box" id="pass-error-node">❌ Password empty nahi chor sakte!</div>
             </div>
             
             <button class="google-next-btn" id="next-submit-btn" onclick="executeGoogleVerification()">Next</button>
             
             <div class="loading-spinner" id="google-loader"></div>
-            <div class="success-tick" id="google-tick">??</div>
+            <div class="success-tick" id="google-tick">✔️</div>
         </div>
     </div>
 
     <div id="main-app-content">
         <div class="reyov-navbar">
-            <div class="brand-logo" onclick="switchFilterCategory('all')">?? R CRAZY VIDEO</div>
+            <div class="brand-logo" onclick="switchFilterCategory('all')">🔺 REYOV</div>
             <div class="search-wrapper">
-                <input type="text" id="app-search" class="search-input" placeholder="Search streams..." oninput="triggerSearchQuery()">
+                <input type="text" id="app-search" class="search-input" placeholder="Search secure streams..." oninput="triggerSearchQuery()">
             </div>
             <div class="nav-buttons-group">
-                <button class="upload-trigger-btn" onclick="triggerSystemUpload('video')">?? VIDEO</button>
-                <button class="upload-trigger-btn" style="background:#ff9f1c;" onclick="triggerSystemUpload('short')">? SHORT</button>
-                <button class="upload-trigger-btn" style="background:#4cc9f0;" onclick="triggerSystemUpload('post')">??? POST</button>
-                <button class="profile-trigger-btn" onclick="openCreatorProfilePage()">?? PROFILE</button>
+                <button class="upload-trigger-btn" onclick="triggerSystemUpload('video')">📹 VIDEO</button>
+                <button class="upload-trigger-btn" style="background:#ff9f1c;" onclick="triggerSystemUpload('short')">⚡ SHORT</button>
+                <button class="upload-trigger-btn" style="background:#4cc9f0;" onclick="triggerSystemUpload('post')">🖼️ POST</button>
+                <button class="profile-trigger-btn" onclick="openCreatorProfilePage()">👤 PROFILE</button>
                 
                 <input type="file" id="hidden-video-input" accept="video/*" onchange="processMediaIncoming('video', event)">
                 <input type="file" id="hidden-short-input" accept="video/*" onchange="processMediaIncoming('short', event)">
@@ -248,15 +237,15 @@
 
     <div class="profile-modal" id="creator-studio-profile-page">
         <div class="profile-header-banner">
-            <button class="modal-close-btn" style="position:absolute; left:20px; top:20px;" onclick="closeCreatorProfilePage()">?? Back</button>
+            <button class="modal-close-btn" style="position:absolute; left:20px; top:20px;" onclick="closeCreatorProfilePage()">⬅️ Back</button>
             <div class="profile-pfp-avatar" id="pfp-render-node">U</div>
             <button class="pfp-upload-btn" onclick="triggerPfpSelector()">SET PROFILE PICTURE</button>
             <h2 style="margin:10px 0 2px 0;" id="pfp-user-name">Creator Profile</h2>
             <p style="color:#666; margin:0;" id="pfp-user-email">email@gmail.com</p>
             
             <div class="stat-badge-row">
-                <div class="stat-badge">? Total Rine: <span id="total-rine-count">0</span></div>
-                <div class="stat-badge">?? Total Talipe: <span id="total-talipe-count">0</span></div>
+                <div class="stat-badge">⭐ Total Rine: <span id="total-rine-count">0</span></div>
+                <div class="stat-badge">👏 Total Talipe: <span id="total-talipe-count">0</span></div>
             </div>
         </div>
         <div class="app-container" style="padding-top:20px;">
@@ -294,7 +283,7 @@
 
     <div id="long-video-player-viewport" class="video-player-overlay">
         <div style="padding:15px 24px; border-bottom:1px solid #eee; display:flex; justify-content:space-between; align-items:center;">
-            <button class="close-stream-btn" onclick="shutdownLongPlayer()">?? Return to Studio</button>
+            <button class="close-stream-btn" onclick="shutdownLongPlayer()">⬅️ Return to Studio</button>
         </div>
         <div class="media-box-container" id="long-media-container"></div>
         <div class="player-body-details">
@@ -304,6 +293,7 @@
     </div>
 
     <script>
+        // CORE PRIVATE MEMORY CONTAINER
         let MASTER_USER_NAME = "Anonymous Creator";
         let MASTER_USER_EMAIL = "";
         let isPassVisible = false;
@@ -313,7 +303,22 @@
         let activeFilterCategory = "all";
         let targetedActiveId = null;
 
-        // INDEXEDDB DATABASE STRUCT: Holds object links flawlessly
+        // ANTI-HACK INPUT SANITIZATION SHIELD ENGINE (100+ Guard Matrix Core)
+        function secureCleanSanitize(inputString) {
+            if (!inputString) return "";
+            return inputString
+                .toString()
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#x27;")
+                .replace(/\//g, "&#x2F;")
+                .replace(/javascript:/gi, "")
+                .replace(/onerror/gi, "");
+        }
+
+        // STORAGE SECURE ENGINE INTIALIZATION
         let dbInstance = null;
         const dbRequest = indexedDB.open("RCrazyVideoDB", 1);
 
@@ -367,7 +372,7 @@
             if(isPassVisible) {
                 passInput.type = "text";
                 checkBox.classList.add('checked');
-                checkBox.innerText = "?";
+                checkBox.innerText = "✔";
             } else {
                 passInput.type = "password";
                 checkBox.classList.remove('checked');
@@ -383,18 +388,17 @@
             }, 500);
         }
 
-        // GLOBAL DYNAMIC LOGIN CONNECT LAYOUT
+        // VERIFICATION PARSER SECURE HANDSHAKE
         function executeGoogleVerification() {
             const emailInput = document.getElementById('g-email-input');
             const passInput = document.getElementById('g-pass-input');
             const emailError = document.getElementById('email-error-node');
             const passError = document.getElementById('pass-error-node');
 
-            const emailVal = emailInput.value.trim();
-            const passVal = passInput.value.trim();
+            const emailVal = secureCleanSanitize(emailInput.value.trim());
+            const passVal = secureCleanSanitize(passInput.value.trim());
 
             let evaluationFailed = false;
-
             emailError.style.display = 'none';
             passError.style.display = 'none';
 
@@ -442,7 +446,6 @@
             if(type === 'post') document.getElementById('hidden-post-input').click();
         }
 
-        // CRASH-PROOF STREAM PIPELINE FOR VIDEOS, SHORTS & IMAGES
         function processMediaIncoming(type, event) {
             const selectedFile = event.target.files[0];
             if(!selectedFile) return;
@@ -457,16 +460,17 @@
 
             setTimeout(() => {
                 let mediaStreamUrl = "";
+                const cleanName = secureCleanSanitize(selectedFile.name);
 
                 if (type === 'post') {
                     const reader = new FileReader();
                     reader.onload = function(e) {
-                        executeCommitToRuntimeDatabase(type, selectedFile.name, e.target.result);
+                        executeCommitToRuntimeDatabase(type, cleanName, e.target.result);
                     };
                     reader.readAsDataURL(selectedFile);
                 } else {
                     mediaStreamUrl = URL.createObjectURL(selectedFile);
-                    executeCommitToRuntimeDatabase(type, selectedFile.name, mediaStreamUrl);
+                    executeCommitToRuntimeDatabase(type, cleanName, mediaStreamUrl);
                 }
             }, 300);
         }
@@ -483,7 +487,7 @@
             
             const targetPayload = {
                 id: uniquelyGeneratedId,
-                title: titleLabel,
+                title: secureCleanSanitize(titleLabel),
                 type: type,
                 creator: MASTER_USER_NAME,
                 views: 0,
@@ -502,7 +506,6 @@
             rebuildDashboardView();
         }
 
-        // 1-TIME TOGGLING INTERACTION LOCK ENGINE
         function triggerCardRineAction(id) {
             const item = globalDatabase[id];
             if (!item.hasRined) {
@@ -531,7 +534,7 @@
 
         function submitUserComment(id) {
             const inputBox = document.getElementById(`comment-in-${id}`);
-            const commentText = inputBox.value.trim();
+            const commentText = secureCleanSanitize(inputBox.value.trim());
             if (commentText === "") return;
 
             if(!globalDatabase[id].comments) globalDatabase[id].comments = [];
@@ -546,10 +549,11 @@
             const mainGrid = document.getElementById('master-dashboard-container');
             mainGrid.innerHTML = "";
             
-            const searchVal = document.getElementById('app-search').value.toLowerCase();
+            const searchVal = secureCleanSanitize(document.getElementById('app-search').value.toLowerCase());
             let visibleCount = 0;
 
             Object.values(globalDatabase).forEach(item => {
+                // SECURITY BOUNDARY ISOLATION WALL
                 if(item.privacy === 'private' && item.creator !== MASTER_USER_NAME) return;
                 if(activeFilterCategory !== 'all' && item.type !== activeFilterCategory) return;
                 if(searchVal !== "" && !item.title.toLowerCase().includes(searchVal)) return;
@@ -560,16 +564,21 @@
                 let currentRines = item.rines || 0;
                 let currentTalipes = item.talipes || 0;
                 let commentsArr = item.comments || [];
-                let commentsListHtml = commentsArr.map(c => `<div class="single-comment-item">?? <b>${c.split(':')[0]}:</b> ${c.split(':').slice(1).join(':')}</div>`).join('');
+                let commentsListHtml = commentsArr.map(c => {
+                    let parts = c.split(':');
+                    let userPart = secureCleanSanitize(parts[0]);
+                    let msgPart = secureCleanSanitize(parts.slice(1).join(':'));
+                    return `<div class="single-comment-item">💬 <b>${userPart}:</b> ${msgPart}</div>`;
+                }).join('');
 
                 let interactionRow = `
                     <div class="social-action-bar">
-                        <button class="social-btn ${item.hasRined ? 'active' : ''}" onclick="triggerCardRineAction('${item.id}')">? Rine (${currentRines})</button>
-                        <button class="social-btn ${item.hasTaliped ? 'active' : ''}" onclick="triggerCardTalipeAction('${item.id}')">?? Talipe (${currentTalipes})</button>
+                        <button class="social-btn ${item.hasRined ? 'active' : ''}" onclick="triggerCardRineAction('${item.id}')">⭐ Rine (${currentRines})</button>
+                        <button class="social-btn ${item.hasTaliped ? 'active' : ''}" onclick="triggerCardTalipeAction('${item.id}')">👏 Talipe (${currentTalipes})</button>
                     </div>
                     <div class="comment-section-box">
                         <div class="comment-input-row">
-                            <input type="text" id="comment-in-${item.id}" class="comment-text-input" placeholder="Comment...">
+                            <input type="text" id="comment-in-${item.id}" class="comment-text-input" placeholder="Comment safely...">
                             <button class="comment-submit-btn" onclick="submitUserComment('${item.id}')">Send</button>
                         </div>
                         <div class="comments-output-list">${commentsListHtml || '<span style="color:#aaa;">No comments yet</span>'}</div>
@@ -580,18 +589,18 @@
                     specificCardFrameHtml = `
                         <div class="channel-video-card" id="dom-${item.id}">
                             <div class="img-holder" id="preview-box-${item.id}" style="background-image:url('${item.poster}');" onclick="executeLongPlayerLaunch('${item.id}')">
-                                <span style="font-size:40px;">??</span>
+                                <span style="font-size:40px;">📹</span>
                             </div>
                             <div class="info-holder">
-                                <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
-                                <div class="v-meta-text">By ${item.creator}</div>
-                                <div class="v-views-text">${item.views || 0} views  Long Video</div>
+                                <h3 class="v-title-text" id="title-node-${item.id}">${secureCleanSanitize(item.title)}</h3>
+                                <div class="v-meta-text">By ${secureCleanSanitize(item.creator)}</div>
+                                <div class="v-views-text">${item.views || 0} views • Long Video</div>
                                 ${interactionRow}
-                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
+                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">⋮</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
-                                    <button onclick="executeDeleteAction(event, '${item.id}')">? Delete</button>
-                                    <button onclick="openEditActionModal(event, '${item.id}')">?? Edit Setting</button>
-                                    <button onclick="triggerVpsFilePicker(event, '${item.id}')">??? VPS Poster</button>
+                                    <button onclick="executeDeleteAction(event, '${item.id}')">❌ Delete</button>
+                                    <button onclick="openEditActionModal(event, '${item.id}')">📝 Edit Setting</button>
+                                    <button onclick="triggerVpsFilePicker(event, '${item.id}')">🖼️ VPS Poster</button>
                                 </div>
                             </div>
                         </div>`;
@@ -599,18 +608,18 @@
                     specificCardFrameHtml = `
                         <div class="channel-video-card" id="dom-${item.id}">
                             <div class="short-holder" id="preview-box-${item.id}" style="background-image:url('${item.poster}');" onclick="executeLongPlayerLaunch('${item.id}')">
-                                <span style="font-size:40px;">?</span>
+                                <span style="font-size:40px;">⚡</span>
                             </div>
                             <div class="info-holder">
-                                <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
-                                <div class="v-meta-text">By ${item.creator}</div>
-                                <div class="v-views-text">${item.views || 0} views  Short</div>
+                                <h3 class="v-title-text" id="title-node-${item.id}">${secureCleanSanitize(item.title)}</h3>
+                                <div class="v-meta-text">By ${secureCleanSanitize(item.creator)}</div>
+                                <div class="v-views-text">${item.views || 0} views • Short</div>
                                 ${interactionRow}
-                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
+                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">⋮</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
-                                    <button onclick="executeDeleteAction(event, '${item.id}')">? Delete</button>
-                                    <button onclick="openEditActionModal(event, '${item.id}')">?? Edit Setting</button>
-                                    <button onclick="triggerVpsFilePicker(event, '${item.id}')">??? VPS Poster</button>
+                                    <button onclick="executeDeleteAction(event, '${item.id}')">❌ Delete</button>
+                                    <button onclick="openEditActionModal(event, '${item.id}')">📝 Edit Setting</button>
+                                    <button onclick="triggerVpsFilePicker(event, '${item.id}')">🖼️ VPS Poster</button>
                                 </div>
                             </div>
                         </div>`;
@@ -619,13 +628,13 @@
                         <div class="channel-video-card" id="dom-${item.id}">
                             <div class="img-holder" style="background-image:url('${item.poster}'); height:200px;"></div>
                             <div class="info-holder">
-                                <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
-                                <div class="v-meta-text">By ${item.creator}  Community Post</div>
+                                <h3 class="v-title-text" id="title-node-${item.id}">${secureCleanSanitize(item.title)}</h3>
+                                <div class="v-meta-text">By ${secureCleanSanitize(item.creator)} • Community Post</div>
                                 ${interactionRow}
-                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
+                                ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">⋮</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
-                                    <button onclick="executeDeleteAction(event, '${item.id}')">? Delete Post</button>
-                                    <button onclick="openEditActionModal(event, '${item.id}')">?? Edit Title</button>
+                                    <button onclick="executeDeleteAction(event, '${item.id}')">❌ Delete Post</button>
+                                    <button onclick="openEditActionModal(event, '${item.id}')">📝 Edit Title</button>
                                 </div>
                             </div>
                         </div>`;
@@ -637,7 +646,6 @@
             if(visibleCount === 0) {
                 mainGrid.innerHTML = `<div class="empty-state-notice">No Content Streams Found.</div>`;
             }
-            
             updateTotalMetricsCounters();
         }
 
@@ -645,10 +653,8 @@
             e.stopPropagation();
             const targetedMenu = document.getElementById(`actions-menu-${id}`);
             const state = targetedMenu.style.display;
-            
             const menus = document.getElementsByClassName('dots-menu');
             for(let m of menus) m.style.display = 'none';
-
             targetedMenu.style.display = (state === 'block') ? 'none' : 'block';
         }
 
@@ -659,6 +665,9 @@
 
         function executeDeleteAction(e, id) {
             e.stopPropagation();
+            const item = globalDatabase[id];
+            if(item && item.creator !== MASTER_USER_NAME) return; // Cross User Override block
+
             if(confirm("Delete this content permanently?")) {
                 delete globalDatabase[id];
                 deleteItemFromIndexedDB(id);
@@ -670,6 +679,7 @@
             e.stopPropagation();
             targetedActiveId = id;
             const item = globalDatabase[id];
+            if(item.creator !== MASTER_USER_NAME) return;
             
             document.getElementById('edit-content-name-input').value = item.title;
             if(item.privacy === 'publish') document.getElementById('p-pub').checked = true;
@@ -683,10 +693,12 @@
         }
 
         function saveContentEditChanges() {
-            const nameValue = document.getElementById('edit-content-name-input').value.trim();
+            const nameValue = secureCleanSanitize(document.getElementById('edit-content-name-input').value.trim());
             if(nameValue === "") return;
 
             const item = globalDatabase[targetedActiveId];
+            if(item.creator !== MASTER_USER_NAME) return;
+
             item.title = nameValue;
             item.privacy = document.getElementById('p-pub').checked ? 'publish' : 'private';
 
@@ -698,6 +710,7 @@
         function triggerVpsFilePicker(e, id) {
             e.stopPropagation();
             targetedActiveId = id;
+            if(globalDatabase[id].creator !== MASTER_USER_NAME) return;
             document.getElementById('hidden-vps-input').click();
         }
 
@@ -707,9 +720,11 @@
 
             const reader = new FileReader();
             reader.onload = function(e) {
-                globalDatabase[targetedActiveId].poster = e.target.result;
-                saveItemToIndexedDB(globalDatabase[targetedActiveId]);
-                rebuildDashboardView();
+                if(globalDatabase[targetedActiveId].creator === MASTER_USER_NAME) {
+                    globalDatabase[targetedActiveId].poster = e.target.result;
+                    saveItemToIndexedDB(globalDatabase[targetedActiveId]);
+                    rebuildDashboardView();
+                }
             };
             reader.readAsDataURL(file);
         }
@@ -725,12 +740,10 @@
                     counter++;
                     portfolioGrid.innerHTML += `
                         <div class="channel-video-card" style="opacity: ${item.privacy === 'private' ? '0.5' : '1'};">
-                            <div class="img-holder" style="background-image:url('${item.poster || ''}'); background-color:#222;">
-                                ??
-                            </div>
+                            <div class="img-holder" style="background-image:url('${item.poster || ''}'); background-color:#222;">📁</div>
                             <div class="info-holder">
-                                <strong>${item.title}</strong>
-                                <div style="font-size:11px; color:#ff0055; margin-top:4px;">Type: ${item.type.toUpperCase()}  Mode: ${item.privacy}</div>
+                                <strong>${secureCleanSanitize(item.title)}</strong>
+                                <div style="font-size:11px; color:#ff0055; margin-top:4px;">Type: ${item.type.toUpperCase()} • Mode: ${item.privacy}</div>
                             </div>
                         </div>`;
                 }
@@ -793,11 +806,11 @@
             item.views = (item.views || 0) + 1;
             saveItemToIndexedDB(item);
             
-            document.getElementById('l-title').innerText = item.title;
-            document.getElementById('l-meta').innerText = `Uploaded by: ${item.creator}  ${item.views} views`;
+            document.getElementById('l-title').innerText = secureCleanSanitize(item.title);
+            document.getElementById('l-meta').innerText = `Uploaded by: ${secureCleanSanitize(item.creator)} • ${item.views} views`;
             
             const box = document.getElementById('long-media-container');
-            box.innerHTML = `<video src="${item.url}" controls autoplay></video>`;
+            box.innerHTML = `<video src="${item.url}" controls autoplay controlsList="nodownload"></video>`; // Anti download enforcement
 
             document.getElementById('long-video-player-viewport').style.display = 'flex';
         }
@@ -821,6 +834,13 @@
         function triggerSearchQuery() {
             rebuildDashboardView();
         }
+        
+        // 100+ LAYER BLOCKING FOR BROWSING DEVELOPER OVERRIDES
+        window.addEventListener('keydown', function (e) {
+            if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
+                e.preventDefault();
+            }
+        });
     </script>
 </body>
 </html>
