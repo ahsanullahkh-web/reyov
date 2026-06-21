@@ -47,7 +47,7 @@
             100% { transform: scale(1.05); opacity: 1; }
         }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER & NAVIGATION BLOCK - STRICT FIXED POSITION */
         header {
             position: fixed;
             top: 0;
@@ -61,7 +61,7 @@
             justify-content: space-between;
             padding: 0 20px;
             box-sizing: border-box;
-            z-index: 1000;
+            z-index: 1500; /* Highest layer to prevent swipe overlap */
         }
         .logo-container {
             display: flex;
@@ -107,17 +107,20 @@
         .btn-post { background-color: #33b5e5; color: white; }
         .btn-profile { background-color: #000000; color: white; }
 
-        /* FILTER TABS */
+        /* FILTER TABS - ABSOLUTELY PINNED TO TOP */
         .filter-container {
-            margin-top: 90px;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
             display: flex;
             justify-content: center;
             gap: 15px;
-            padding: 10px;
-            position: sticky;
-            top: 70px;
+            padding: 15px 10px;
             background: #ffffff;
-            z-index: 900;
+            z-index: 1400;
+            box-sizing: border-box;
+            border-bottom: 1px solid #f0f0f0;
         }
         .filter-pill {
             padding: 8px 22px;
@@ -134,16 +137,17 @@
             color: white;
         }
 
-        /* SWIPE / SCROLL ENGINE SHELL */
+        /* SWIPE / SCROLL ENGINE SHELL - ISOLATED BELOW TIMELINE */
         .swipe-viewport-wrapper {
             width: 100vw;
+            margin-top: 150px; /* Gives perfect room for header and tab pills */
             overflow: hidden;
             position: relative;
         }
         
         .swipe-track-container {
             display: flex;
-            width: 400vw; /* 4 Viewports for All, Videos, Shorts, Posts */
+            width: 400vw; 
             transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
         }
@@ -153,7 +157,7 @@
             width: 100vw;
             box-sizing: border-box;
             padding: 20px;
-            min-height: 80vh;
+            min-height: 75vh;
         }
 
         .section-title {
@@ -404,7 +408,7 @@
         let currentActiveSession = false;
         let activeTabIndex = 0;
         let activeUploadTargetType = "";
-        let dynamicLocalMemoryDB = []; // Wiped clean. No static/dummy objects populated by default.
+        let dynamicLocalMemoryDB = [];
 
         // TOUCH INTERACTION VECTOR DETECTORS
         let touchStartCoordX = 0;
@@ -425,7 +429,6 @@
             setupTouchNavigationListeners();
         });
 
-        // RE-BUILT DYNAMIC CORE GRID DISPATCHER
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short', 'post'];
             
@@ -470,7 +473,7 @@
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
-        // TOUCH GESTURE COMPASS NAVIGATION CONTROLLER (LEFT / RIGHT CONTROL LAYER)
+        // TOUCH GESTURE NAVIGATION CONTROLLER (AFFECTS ONLY THE WRAPPER TRACK)
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
 
@@ -490,25 +493,20 @@
             const deltaX = touchEndCoordX - touchStartCoordX;
             const deltaY = touchEndCoordY - touchStartCoordY;
 
-            // Ensure horizontal swipe intent dominates vertical scroll threshold
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 45) {
                 if (deltaX < 0) {
-                    // Swiped Left -> Move forward to right tab panel
                     if (activeTabIndex < 3) jumpToTabSegment(activeTabIndex + 1);
                 } else {
-                    // Swiped Right -> Move backward to left tab panel
                     if (activeTabIndex > 0) jumpToTabSegment(activeTabIndex - 1);
                 }
             }
         }
 
-        // CONTROL PIVOT FOR SHIFTING GRID PANELS WITH FLUID TRANSITION
         function jumpToTabSegment(tabIdx) {
             activeTabIndex = tabIdx;
             const track = document.getElementById('swipe-track');
             track.style.transform = `translateX(-${tabIdx * 100}vw)`;
 
-            // Sync visual highlights on pill badges
             const tabsArr = ['all', 'video', 'short', 'post'];
             const pills = document.getElementsByClassName('filter-pill');
             for (let p of pills) p.classList.remove('active');
@@ -535,7 +533,6 @@
             document.getElementById('system-modal').style.display = 'flex';
         }
 
-        // SECURE SYSTEM LOG ARCHITECTURE WITH HIGH PERFORMANCE VALIDATION CONTROLS
         function renderAuthLayout(statusMessageText) {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
@@ -583,7 +580,7 @@
             }
         }
 
-        // CRITICAL STRICT ACCESS CONTROL INTERCEPT MATRIX
+        // RIGID STRICT RE-MATCH VALIDATION SYSTEM
         function executeSecureAuthentication() {
             const emailIn = document.getElementById('auth-email-field').value.trim();
             const passIn = document.getElementById('auth-pass-field').value;
@@ -594,9 +591,10 @@
             errBox.style.display = 'none';
             successBox.style.display = 'none';
 
-            if (emailIn === SECURITY_CREDENTIALS.user && passIn === SECURITY_CREDENTIALS.pass) {
+            // Checking exact matching string arrays securely
+            if (emailIn.toLowerCase() === SECURITY_CREDENTIALS.user.toLowerCase() && passIn === SECURITY_CREDENTIALS.pass) {
                 currentActiveSession = true;
-                successBox.style.display = 'block'; // Shows Green Verification Box
+                successBox.style.display = 'block';
                 
                 setTimeout(() => {
                     if (activeUploadTargetType !== "") {
@@ -607,8 +605,8 @@
                 }, 800);
             } else {
                 currentActiveSession = false;
-                errBox.style.display = 'block'; // Shows Red Access Denied Box
-                document.getElementById('auth-pass-field').value = ''; // Flush exploit buffer injection
+                errBox.style.display = 'block';
+                document.getElementById('auth-pass-field').value = '';
             }
         }
 
@@ -676,7 +674,6 @@
             activeUploadTargetType = "";
         }
 
-        // RIGID BLOCK INLINE DEVTOOLS COMMAND TAMPER PROTECTION LAYER
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
