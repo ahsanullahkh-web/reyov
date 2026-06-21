@@ -39,7 +39,7 @@
             text-shadow: 0 4px 15px rgba(255,0,85,0.4);
         }
 
-        /* LOCKED MAIN FIXED HEADER FRAME */
+        /* FIXED MAIN HEADER FRAME */
         header {
             position: fixed;
             top: 0;
@@ -154,10 +154,10 @@
             letter-spacing: -0.5px;
         }
 
-        /* ULTRA 4K GRID CORE MATRIX CONSTRUCTS */
+        /* GRID CONSTRUCTS WITH FIXED LAYOUT DIMENSIONS */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 25px;
             max-width: 1440px;
             margin: 0 auto;
@@ -171,26 +171,53 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            transition: width 0.3s ease;
         }
         
-        /* 4K MONITOR RENDER WRAPPERS */
+        /* PREVIEW FRAME WRAPPERS (LAMBI VERTICAL STYLING DESIGN BY DEFAULT) */
         .media-preview-box {
             width: 100%;
-            height: 195px;
+            height: 420px; /* Default Lambi Video Track Dimensions */
             background: #000000;
             position: relative;
             overflow: hidden;
+            transition: height 0.3s ease;
         }
+        
+        /* SHORTS FRAME (MOBILE SCREEN TYPE DIMENSIONS - VERTICAL MEDIUM THORA BARA SIZE) */
+        .media-card.short-layout-type .media-preview-box {
+            height: 520px; /* Thora Bara Mobile Layout Aspect Ratio Footprint */
+        }
+
         .media-preview-box video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-        .media-preview-box video.expanded-frame {
-            object-fit: contain !important;
-            background: #050505;
+
+        /* CUSTOM CONTROLS OVERLAY FOR SCREEN SIZE MANIPULATION */
+        .size-controller-hud {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            display: flex;
+            gap: 5px;
+            z-index: 10;
         }
+        .size-hud-btn {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        .size-hud-btn:hover { background: #ff0055; }
+
         .custom-thumbnail-layer {
             position: absolute;
             top: 0;
@@ -207,14 +234,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 12px;
+            padding: 12px;
             background: #fdfdfd;
             border-top: 1px solid #f5f5f5;
             border-bottom: 1px solid #f5f5f5;
         }
         .engagement-action-btn {
-            padding: 6px 12px;
-            border-radius: 15px;
+            padding: 8px 14px;
+            border-radius: 20px;
             font-size: 11px;
             font-weight: 800;
             border: 1px solid #e0e0e0;
@@ -223,6 +250,7 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
+            transition: all 0.2s ease;
         }
         .engagement-action-btn.active-fired {
             background: #ff0055 !important;
@@ -271,7 +299,7 @@
             cursor: pointer;
         }
 
-        /* THREE DOT CONTROL HUD SIGNALS */
+        /* THREE DOT CONTROL HUDS (EXCLUSIVE SYSTEM DISPLAYS) */
         .three-dots-trigger-node {
             position: absolute;
             top: 10px;
@@ -361,17 +389,14 @@
         .input-label { display: block; font-size: 11px; font-weight: 800; margin-bottom: 6px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-control { width: 100%; padding: 12px 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; }
         
-        /* VISIBILITY SELECTOR PILLS */
         .visibility-pills-row { display: flex; gap: 10px; margin-top: 5px; }
         .visibility-pill-btn { flex: 1; padding: 12px; border: 2px solid #eee; background: #fff; font-weight: 800; border-radius: 8px; text-align: center; cursor: pointer; font-size: 13px; }
         .visibility-pill-btn.selected-status { border-color: #ff0055 !important; color: #ff0055 !important; background: #fff5f7 !important; }
 
-        /* LOADING ANIMATION SPIN ENGINE */
         .timer-container { text-align: center; padding: 25px 10px; }
         .spinner { width: 44px; height: 44px; border: 4px solid #f3f3f3; border-top: 4px solid #ff0055; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* STUDIO COMPONENT METRICS ARCHIVE */
         .profile-pic-container { position: relative; width: 85px; height: 85px; margin: 0 auto 12px; cursor: pointer; }
         .profile-pic-view { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #ff0055; background: #eee; }
         .metric-row { display: flex; justify-content: space-around; background: #f8f9fa; border-radius: 12px; padding: 14px 5px; margin: 15px 0; border: 1px solid #eaeaea; }
@@ -450,12 +475,12 @@
         let pendingUploadType = "";
         let selectedFileBlobUrl = "";
         
-        // REYOV DATABASE STORAGE REAL STACK (INITIALIZED WITH 0)
+        // REYOV LIVE RUNTIME LOCAL REGISTRIES (STRICT INITIAL STATS MAPS TO 0)
         let dynamicLocalMemoryDB = []; 
         let globalSystemLikesCount = 0;
         let globalSystemSubsCount = 0;
 
-        // EDIT CONSOLE TRANSACTION LAYER BUFFER ENGINE
+        // SEPARATE DUAL BUFFER STORAGE OBJECT FOR VIDEO ADMINISTRATION HUD ACTIONS
         let editStageBufferState = {
             targetItemId: null,
             tempTitle: "",
@@ -463,7 +488,7 @@
             tempThvipUrl: ""
         };
 
-        // TRACK TRACKERS FOR UNIQUE USER INTERACTIONS PER MEDIA CARDS
+        // TRACK REGISTRY FOR ADD / REMOVE DYNAMIC COUNTERS CONSOLE CONTEXTS
         let userEngagementRegistry = {
             likesTrack: {},
             subsTrack: {}
@@ -490,7 +515,7 @@
             setupFileSelectionTriggers();
         });
 
-        // 4K REBUILD CORE GENERATOR MATRIX ENGINE
+        // REBUILD CORE ENGINE RENDER STAGES (SUPPORTS NATIVE VERTICAL OVERRIDE PIPELINES)
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short'];
             
@@ -499,7 +524,7 @@
                 if (!targetGrid) return;
                 targetGrid.innerHTML = '';
 
-                // Filtering visibility parameters (Hide private tracks from public stream grids)
+                // Strip and exclude layout elements marked under private status mapping constraints
                 let filtered = dynamicLocalMemoryDB.filter(item => {
                     if (item.visibility === 'private') return false;
                     if (cat === 'all') return true;
@@ -511,22 +536,20 @@
                         <div class="empty-state-container">
                             <div class="empty-icon">📂</div>
                             <div style="font-weight:800; font-size:16px; color:#111;">No Transmissions Live</div>
-                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform database reads 0 records. Add ultra media clips above to deploy tracks.</div>
+                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform database reads 0 records. Add ultra 4K clips above to deploy tracks.</div>
                         </div>
                     `;
                 } else {
                     filtered.forEach(item => {
                         const card = document.createElement('div');
-                        card.className = 'media-card';
+                        // Inject unique formatting styles for structural shorts classification tracks
+                        card.className = `media-card ${item.type === 'short' ? 'short-layout-type' : ''}`;
                         
-                        // Condition check to verify unique single click engagement state
                         const isLiked = userEngagementRegistry.likesTrack[item.id] ? 'active-fired' : '';
                         const isSubbed = userEngagementRegistry.subsTrack[item.id] ? 'active-fired' : '';
 
-                        // Check if THVIP custom thumbnail overlay is attached
                         let thvipImageTag = item.thvip ? `<img src="${item.thvip}" class="custom-thumbnail-layer" id="thvip-layer-${item.id}">` : '';
 
-                        // Generate unique comments list elements
                         let compiledCommentsHTML = '';
                         item.comments.forEach(c => {
                             compiledCommentsHTML += `
@@ -537,14 +560,21 @@
                             `;
                         });
 
+                        // 3 DOT MANAGEMENT SYSTEM DROPPED EXCLUSIVELY TO CONTENT AUTHOR SIGNALS ONLY
+                        let threeDotsMenuHTML = `<div class="three-dots-trigger-node" onclick="openVideoStructuralAdminHUD(${item.id})">⋮</div>`;
+
                         card.innerHTML = `
                             <div class="badge-type-tag">${item.type}</div>
-                            
-                            <div class="three-dots-trigger-node" onclick="openVideoStructuralAdminHUD(${item.id})">⋮</div>
+                            ${threeDotsMenuHTML}
                             
                             <div class="media-preview-box" id="box-wrapper-${item.id}">
                                 ${thvipImageTag}
-                                <video src="${item.url}" id="video-core-node-${item.id}" playsinline loop onplay="hideThvipOverlayPreview(${item.id})"></video>
+                                <video src="${item.url}" id="video-core-node-${item.id}" controls playsinline loop onplay="hideThvipOverlayPreview(${item.id})"></video>
+                                
+                                <div class="size-controller-hud">
+                                    <div class="size-hud-btn" onclick="modifyVideoScreenBounds(${item.id}, 'big')">📺 Big</div>
+                                    <div class="size-hud-btn" onclick="modifyVideoScreenBounds(${item.id}, 'small')">📱 Small</div>
+                                </div>
                             </div>
 
                             <div class="media-info">
@@ -553,14 +583,11 @@
                             </div>
 
                             <div class="interaction-panel-track">
-                                <button class="engagement-action-btn ${isLiked}" onclick="executeLiveCardLikeAction(${item.id}, this)">
+                                <button class="engagement-action-btn ${isLiked}" onclick="toggleCardLikeExecutionState(${item.id}, this)">
                                     👍 Like (<span id="like-counter-view-${item.id}">${item.likes}</span>)
                                 </button>
-                                <button class="engagement-action-btn ${isSubbed}" onclick="executeLiveCardSubsAction(${item.id}, this)">
+                                <button class="engagement-action-btn ${isSubbed}" onclick="toggleCardSubsExecutionState(${item.id}, this)">
                                     🔔 Subscribe
-                                </button>
-                                <button class="engagement-action-btn" style="background:#000; color:#fff;" onclick="toggleScreenFrameSize(${item.id})">
-                                    📺 Resize Frame
                                 </button>
                             </div>
 
@@ -589,45 +616,64 @@
             if (overlay) overlay.style.display = 'none';
         }
 
-        // CONTROL FRAME MATRIX SIZE MANIPULATIONS
-        function toggleScreenFrameSize(itemId) {
-            const videoNode = document.getElementById(`video-core-node-${itemId}`);
+        // CONTROL SCREEN MULTI BOUNDS EXPAND CHANNELS
+        function modifyVideoScreenBounds(itemId, modeType) {
             const wrapperBox = document.getElementById(`box-wrapper-${itemId}`);
-            if (videoNode && wrapperBox) {
-                if (videoNode.classList.contains('expanded-frame')) {
-                    videoNode.classList.remove('expanded-frame');
-                    wrapperBox.style.height = '195px';
+            const videoElement = document.getElementById(`video-core-node-${itemId}`);
+            let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
+            if (!wrapperBox) return;
+
+            if (modeType === 'big') {
+                // Expand boundaries to take extensive space layout parameters
+                wrapperBox.style.height = "720px";
+                if(videoElement) videoElement.style.objectFit = "contain";
+            } else if (modeType === 'small') {
+                // Revert frame measurements back to standard configurations safely
+                if (itemObj && itemObj.type === 'short') {
+                    wrapperBox.style.height = "520px";
                 } else {
-                    videoNode.classList.add('expanded-frame');
-                    wrapperBox.style.height = '320px'; // Expanded dimension footprint
+                    wrapperBox.style.height = "420px";
                 }
+                if(videoElement) videoElement.style.objectFit = "cover";
             }
         }
 
-        // ONE TIME CLICK RE-ROUTING ENGAGEMENT LIKE MATHS
-        function executeLiveCardLikeAction(itemId, elementNode) {
-            if (userEngagementRegistry.likesTrack[itemId]) return; // Execution blocked after 1 initial fire
-            
+        // TOGGLE ADD/REMOVE COUNTER ACTIONS SYSTEM LOGICS
+        function toggleCardLikeExecutionState(itemId, elementNode) {
             let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
-            if (itemObj) {
+            if (!itemObj) return;
+
+            if (userEngagementRegistry.likesTrack[itemId]) {
+                // User clicked again -> REMOVE LIKE CONTEXT (-1)
+                itemObj.likes -= 1;
+                globalSystemLikesCount -= 1;
+                userEngagementRegistry.likesTrack[itemId] = false;
+                elementNode.classList.remove('active-fired');
+            } else {
+                // Add first time initial counter log (+1)
                 itemObj.likes += 1;
                 globalSystemLikesCount += 1;
                 userEngagementRegistry.likesTrack[itemId] = true;
-                
                 elementNode.classList.add('active-fired');
-                document.getElementById(`like-counter-view-${itemId}`).innerText = itemObj.likes;
+            }
+            document.getElementById(`like-counter-view-${itemId}`).innerText = itemObj.likes;
+        }
+
+        function toggleCardSubsExecutionState(itemId, elementNode) {
+            if (userEngagementRegistry.subsTrack[itemId]) {
+                // User clicked again -> REMOVE SUBSCRIBER RECORD MATRIX (-1)
+                globalSystemSubsCount -= 1;
+                userEngagementRegistry.subsTrack[itemId] = false;
+                elementNode.classList.remove('active-fired');
+            } else {
+                // Add unique activation instance (+1)
+                globalSystemSubsCount += 1;
+                userEngagementRegistry.subsTrack[itemId] = true;
+                elementNode.classList.add('active-fired');
             }
         }
 
-        function executeLiveCardSubsAction(itemId, elementNode) {
-            if (userEngagementRegistry.subsTrack[itemId]) return; // Execution blocked after 1 initial fire
-            
-            globalSystemSubsCount += 1;
-            userEngagementRegistry.subsTrack[itemId] = true;
-            elementNode.classList.add('active-fired');
-        }
-
-        // ROUTE OPEN GLOBAL COMMENT ENTRY
+        // ROUTE LIVE GLOBAL BROADCAST FEED ON THE COMMENT MODULE
         function dispatchGlobalCommentBroadcast(itemId) {
             const inputField = document.getElementById(`comment-input-field-${itemId}`);
             const textData = inputField.value.trim();
@@ -640,11 +686,11 @@
                     text: textData
                 });
                 inputField.value = "";
-                rebuildStratifiedGrids(); // Hot sync comment streams globally across channels
+                rebuildStratifiedGrids(); // Hot reload synchronization step to force instant updates
             }
         }
 
-        // CONTROL SWIPE MECHANICS
+        // CONTROL TOUCH CAPABILITIES
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
             viewArea.addEventListener('touchstart', (e) => {
@@ -680,7 +726,7 @@
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        // DIRECT AUTOMATED FILE CAPTURE CAPABILITIES
+        // DEVICE SELECTION HANDLERS
         function setupFileSelectionTriggers() {
             const fileSelector = document.getElementById('media-file-selector');
             fileSelector.addEventListener('change', function() {
@@ -697,7 +743,7 @@
             document.getElementById('media-file-selector').click();
         }
 
-        // MANDATORY 10 SECOND 4K PROCESSING PIPELINE LOADING SCREEN
+        // ENCODING STEP MATRIX TIMER RENDER LAYOUT SCREENS
         function trigger10SecondDelayedDeployment(fileName) {
             const container = document.getElementById('modal-box-content');
             let counterTime = 10;
@@ -705,8 +751,8 @@
             container.innerHTML = `
                 <div class="timer-container">
                     <div class="spinner"></div>
-                    <div style="font-weight:900; font-size:20px; color:#111;">Processing 4K UHD Media</div>
-                    <p style="font-size:12px; color:#666; margin:6px 0 16px;">Encoding raw file block streams natively into system framework containers...</p>
+                    <div style="font-weight:900; font-size:20px; color:#111;">Processing 4K UHD Track</div>
+                    <p style="font-size:12px; color:#666; margin:6px 0 16px;">Encoding high fidelity binary blocks cleanly into standard frame grids...</p>
                     <div style="font-size:36px; font-weight:900; color:#ff0055;" id="live-countdown-clock">10s</div>
                 </div>
             `;
@@ -720,7 +766,7 @@
                 if (counterTime <= 0) {
                     clearInterval(clockInterval);
                     
-                    // Create base operational mapping with 0 metrics
+                    // Push live element model record definitions onto active pipeline trace storage slots
                     dynamicLocalMemoryDB.unshift({
                         id: Date.now(),
                         type: pendingUploadType,
@@ -738,12 +784,12 @@
             }, 1000);
         }
 
-        // ADVANCED 3 DOT CONTROL CONSOLE HUD MODAL MANAGERS
+        // MANAGEMENT OF 3 DOTS EXCLUSIVE OPERATION PANEL VIEW WINDOW HOOKS
         function openVideoStructuralAdminHUD(itemId) {
             const itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
             if (!itemObj) return;
 
-            // Load transaction state tracking caches
+            // Load values to intermediate swap caches to support explicit save/dismiss routines
             editStageBufferState.targetItemId = itemId;
             editStageBufferState.tempTitle = itemObj.title;
             editStageBufferState.tempVisibility = itemObj.visibility;
@@ -796,7 +842,7 @@
 
         function updateVisibilityBufferTrack(statusString) {
             editStageBufferState.tempVisibility = statusString;
-            renderActiveEditHUDStructure(); // Instant hot refresh interface nodes state mappings
+            renderActiveEditHUDStructure();
         }
 
         function triggerThvipLookupWindow() {
@@ -814,7 +860,7 @@
             }
         }
 
-        // DUAL TOGGLE SAVE CONFIRMATION DIALOG MANAGEMENT BALANCES
+        // RE-CONFIRMATION STAGE BALANCERS BEFORE COMMITTING DATA TO DB MATRIX RECS
         function triggerSaveConfirmationDialog() {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
@@ -856,10 +902,9 @@
             `;
         }
 
-        // REAL STUDIO ACCOUNT PROFILE METRICS RENDERING ARCHITECTURE
+        // ACCOUNT STUDIO CONTROLLER PANELS
         function openProfileStudioPanel() {
             const container = document.getElementById('modal-box-content');
-            
             let uploadedHistoryHTML = "";
             let creatorClipsCount = dynamicLocalMemoryDB.length;
 
@@ -934,7 +979,6 @@
             const cleanName = inputNode.value.trim();
             if (cleanName !== "") {
                 profileConfigState.name = cleanName;
-                // Live hot refresh to replace publisher tags instantly across DOM grids
                 const metaLabels = document.querySelectorAll('.media-meta');
                 metaLabels.forEach(lbl => {
                     lbl.innerText = "Author Channel: " + cleanName;
@@ -947,7 +991,7 @@
             pendingUploadType = "";
         }
 
-        // DEV TOOLS PROTECTION BLOCK ENGINE
+        // DEV TOOLS DISABLER PROTECTION LOGICS
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
