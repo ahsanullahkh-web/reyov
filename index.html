@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: https://apis.google.com 'unsafe-inline';">
-    <title>REYOV - Infinite Ultra Custom Navigation Platform</title>
+    <title>REYOV - Stream Platform</title>
     <style>
-        /* INFINITY + MEGA + ULTRA SECURITY MASTER MATRIX - NO HACK / NO DANGER / ULTRA SAFE */
+        /* MASTER STRUCTURE - NO HACK / NO DANGER / SECURE LIGHT ENGINE */
         body {
             margin: 0;
             padding: 0;
@@ -20,7 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* SPLASH INTRO SCREEN */
+        /* SPLASH INTRO LAYER */
         .splash-overlay {
             position: fixed;
             top: 0;
@@ -33,21 +30,16 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.4s ease;
         }
         .splash-logo {
-            font-size: 48px;
+            font-size: 46px;
             font-weight: 900;
             color: #ff0055;
             letter-spacing: 4px;
-            animation: pulse 1.5s infinite alternate;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.95); opacity: 0.8; }
-            100% { transform: scale(1.05); opacity: 1; }
         }
 
-        /* HEADER & NAVIGATION BLOCK - STRICT FIXED POSITION */
+        /* HEADER FRAME - FIXED AND SECURED */
         header {
             position: fixed;
             top: 0;
@@ -59,14 +51,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            padding: 0 15px;
             box-sizing: border-box;
-            z-index: 1500; /* Highest layer to prevent swipe overlap */
+            z-index: 1500;
         }
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 5px;
         }
         .logo-text {
             color: #ff0055;
@@ -76,12 +67,12 @@
         }
         .search-bar-container {
             flex: 1;
-            max-width: 600px;
-            margin: 0 20px;
+            max-width: 500px;
+            margin: 0 15px;
         }
         .search-input {
             width: 100%;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 25px;
             border: 1px solid #e0e0e0;
             background-color: #f5f5f5;
@@ -91,23 +82,23 @@
         }
         .action-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
         }
         .btn {
-            padding: 10px 20px;
+            padding: 9px 16px;
             border-radius: 20px;
             border: none;
             font-weight: 700;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
         }
+        .btn:active { opacity: 0.8; }
         .btn-video { background-color: #ff0055; color: white; }
         .btn-short { background-color: #ff9900; color: white; }
-        .btn-post { background-color: #33b5e5; color: white; }
         .btn-profile { background-color: #000000; color: white; }
 
-        /* FILTER TABS - ABSOLUTELY PINNED TO TOP */
+        /* FIXED TABS FILTER SYSTEM */
         .filter-container {
             position: fixed;
             top: 70px;
@@ -115,100 +106,92 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            gap: 15px;
-            padding: 15px 10px;
+            gap: 12px;
+            padding: 12px 10px;
             background: #ffffff;
             z-index: 1400;
             box-sizing: border-box;
             border-bottom: 1px solid #f0f0f0;
         }
         .filter-pill {
-            padding: 8px 22px;
+            padding: 8px 20px;
             background-color: #f0f0f0;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             user-select: none;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.2s, color 0.2s;
         }
         .filter-pill.active {
             background-color: #ff0055;
             color: white;
         }
 
-        /* SWIPE / SCROLL ENGINE SHELL - ISOLATED BELOW TIMELINE */
+        /* HORIZONTAL SWIPE VIEWPORT TRACK ENGINE */
         .swipe-viewport-wrapper {
             width: 100vw;
-            margin-top: 150px; /* Gives perfect room for header and tab pills */
+            margin-top: 145px; 
             overflow: hidden;
             position: relative;
         }
-        
         .swipe-track-container {
             display: flex;
-            width: 400vw; 
+            width: 300vw; /* 3 Panels: All, Videos, Shorts */
             transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
         }
-
-        /* VIEWPORT CARD ARCHITECTURE */
         .view-panel-section {
             width: 100vw;
             box-sizing: border-box;
-            padding: 20px;
+            padding: 15px;
             min-height: 75vh;
         }
-
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-left: 4px solid #ff0055;
             padding-left: 10px;
         }
 
-        /* INFINITE VERTICAL SCROLL ABILITY GRID */
+        /* DYNAMIC SCROLL GRID MATRIX */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
-
         .media-card {
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
-            transition: transform 0.2s;
-        }
-        .media-card:hover {
-            transform: translateY(-2px);
         }
         .media-preview-box {
             width: 100%;
-            height: 180px;
+            height: 175px;
             background: #111111;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
             font-weight: bold;
+            font-size: 14px;
         }
         .media-info {
-            padding: 15px;
+            padding: 12px;
         }
         .media-title {
             font-weight: 700;
-            font-size: 15px;
-            margin-bottom: 5px;
+            font-size: 14px;
+            margin-bottom: 4px;
             color: #111111;
         }
         .media-meta {
-            font-size: 12px;
+            font-size: 11px;
             color: #666666;
         }
 
@@ -217,17 +200,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
+            padding: 70px 20px;
             text-align: center;
             color: #777777;
             grid-column: 1 / -1;
         }
         .empty-icon {
-            font-size: 64px;
-            margin-bottom: 15px;
+            font-size: 50px;
+            margin-bottom: 10px;
         }
 
-        /* MODAL SYSTEM LAYER */
+        /* POPUP MODAL ARCHITECTURE (ONLY FOR DIRECT UPLOADS) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -235,7 +218,7 @@
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(4px);
             z-index: 2000;
             display: none;
             justify-content: center;
@@ -244,17 +227,16 @@
         .modal-box {
             background: #ffffff;
             width: 90%;
-            max-width: 450px;
+            max-width: 420px;
             border-radius: 16px;
-            padding: 30px;
+            padding: 25px;
             box-sizing: border-box;
-            position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .modal-header {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #111111;
             text-align: center;
         }
@@ -278,50 +260,19 @@
             outline: none;
             box-sizing: border-box;
         }
-        .form-control:focus {
-            border-color: #ff0055;
-        }
-        
-        /* VALIDATION LABELS WITH STATUS MATRIX */
-        .status-box {
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-top: 10px;
-            display: none;
-            text-align: center;
-        }
-        .status-error {
+        .error-box {
             background-color: #ffe6e6;
             color: #cc0000;
-            border: 1px solid #ffcccc;
-        }
-        .status-success {
-            background-color: #e6f9ed;
-            color: #1e7e34;
-            border: 1px solid #c3e6cb;
-        }
-
-        /* GOOGLE AUTH BUTTON */
-        .google-auth-btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 8px;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
             font-weight: 700;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            margin-bottom: 20px;
+            margin-top: 8px;
+            text-align: center;
+            display: none;
         }
-
         .modal-actions {
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
             gap: 10px;
         }
@@ -332,12 +283,10 @@
             font-weight: 700;
             cursor: pointer;
             text-align: center;
+            border: none;
         }
-        .btn-submit { background: #000000; color: white; border: none; }
-        .btn-cancel { background: #f0f0f0; color: #333333; border: none; }
-        .divider { text-align: center; margin: 15px 0; font-size: 12px; color: #aaaaaa; position: relative; }
-        .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 38%; height: 1px; background: #e0e0e0; }
-        .divider::before { left: 0; } .divider::after { right: 0; }
+        .btn-submit { background: #000000; color: white; }
+        .btn-cancel { background: #f0f0f0; color: #333333; }
     </style>
 </head>
 <body>
@@ -348,16 +297,15 @@
 
     <header>
         <div class="logo-container">
-            <a href="#" class="logo-text">?? REYOV</a>
+            <a href="#" class="logo-text">⚡ REYOV</a>
         </div>
         <div class="search-bar-container">
             <input type="text" class="search-input" placeholder="Search parameters..." id="search-core">
         </div>
         <div class="action-buttons">
-            <button class="btn btn-video" onclick="triggerUploadModal('video')">?? VIDEO</button>
-            <button class="btn btn-short" onclick="triggerUploadModal('short')">? SHORT</button>
-            <button class="btn btn-post" onclick="triggerUploadModal('post')">??? POST</button>
-            <button class="btn btn-profile" onclick="toggleProfileControl()">?? PROFILE</button>
+            <button class="btn btn-video" onclick="triggerDirectUpload('video')">📹 VIDEO</button>
+            <button class="btn btn-short" onclick="triggerDirectUpload('short')">🎬 SHORT</button>
+            <button class="btn btn-profile" onclick="openProfilePanelMobile()">👤 PROFILE</button>
         </div>
     </header>
 
@@ -365,30 +313,24 @@
         <div class="filter-pill active" id="pill-all" onclick="jumpToTabSegment(0)">All Feeds</div>
         <div class="filter-pill" id="pill-video" onclick="jumpToTabSegment(1)">Long Videos</div>
         <div class="filter-pill" id="pill-short" onclick="jumpToTabSegment(2)">Shorts Section</div>
-        <div class="filter-pill" id="pill-post" onclick="jumpToTabSegment(3)">Community Posts</div>
     </div>
 
     <div class="swipe-viewport-wrapper" id="swipe-area-viewport">
         <div class="swipe-track-container" id="swipe-track">
             
             <div class="view-panel-section">
-                <div class="section-title">All Dynamic Stream Feeds</div>
+                <div class="section-title">All Media Feeds</div>
                 <div class="content-grid" id="grid-all"></div>
             </div>
 
             <div class="view-panel-section">
-                <div class="section-title">Verified Long Length Videos</div>
+                <div class="section-title">Long Length Videos</div>
                 <div class="content-grid" id="grid-video"></div>
             </div>
 
             <div class="view-panel-section">
                 <div class="section-title">Speed Shorts Feed</div>
                 <div class="content-grid" id="grid-short"></div>
-            </div>
-
-            <div class="view-panel-section">
-                <div class="section-title">Public Community Posts</div>
-                <div class="content-grid" id="grid-post"></div>
             </div>
 
         </div>
@@ -399,18 +341,10 @@
     </div>
 
     <script>
-        // STRICT RE-ENGINEERED FIREWALL DATA ENCLOSURE
-        const SECURITY_CREDENTIALS = {
-            user: "ahsanullahkh@gmail.com",
-            pass: "sirrehan786"
-        };
-
-        let currentActiveSession = false;
         let activeTabIndex = 0;
         let activeUploadTargetType = "";
-        let dynamicLocalMemoryDB = [];
+        let dynamicLocalMemoryDB = []; // 100% Wiped Clean and Empty
 
-        // TOUCH INTERACTION VECTOR DETECTORS
         let touchStartCoordX = 0;
         let touchEndCoordX = 0;
         let touchStartCoordY = 0;
@@ -421,16 +355,17 @@
                 const splash = document.getElementById('splash-screen');
                 if (splash) {
                     splash.style.opacity = '0';
-                    setTimeout(() => splash.remove(), 500);
+                    setTimeout(() => splash.remove(), 400);
                 }
-            }, 1000);
+            }, 800);
             
             rebuildStratifiedGrids();
             setupTouchNavigationListeners();
         });
 
+        // GRID GENERATOR CORE ENGINE
         function rebuildStratifiedGrids() {
-            const categories = ['all', 'video', 'short', 'post'];
+            const categories = ['all', 'video', 'short'];
             
             categories.forEach((cat) => {
                 const targetGrid = document.getElementById(`grid-${cat}`);
@@ -445,9 +380,9 @@
                 if (filtered.length === 0) {
                     targetGrid.innerHTML = `
                         <div class="empty-state-container">
-                            <div class="empty-icon">🔒</div>
-                            <div style="font-weight:800; font-size:18px; color:#111;">No Verified Content Found</div>
-                            <div style="font-size:13px; margin-top:5px; color:#666;">This interface module has been hard-wiped of dummy scripts. Authenticate profile to deploy custom streams.</div>
+                            <div class="empty-icon">📂</div>
+                            <div style="font-weight:800; font-size:17px; color:#111;">No Transmissions Found</div>
+                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform is empty. Use buttons above to launch custom video or short streams.</div>
                         </div>
                     `;
                 } else {
@@ -455,12 +390,12 @@
                         const card = document.createElement('div');
                         card.className = 'media-card';
                         card.innerHTML = `
-                            <div class="media-preview-box">
-                                <span>${item.type.toUpperCase()} TRANSMISSION</span>
+                            <div class="media-preview-box" style="background: ${item.type === 'video' ? '#1a1a1a' : '#2d141e'}">
+                                <span>${item.type.toUpperCase()} MOUNT</span>
                             </div>
                             <div class="media-info">
                                 <div class="media-title">${escapeSecurityHTML(item.title)}</div>
-                                <div class="media-meta">Authorized Broadcast System • Live Track</div>
+                                <div class="media-meta">Broadcast Feed • Active Stream</div>
                             </div>
                         `;
                         targetGrid.appendChild(card);
@@ -473,7 +408,7 @@
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
-        // TOUCH GESTURE NAVIGATION CONTROLLER (AFFECTS ONLY THE WRAPPER TRACK)
+        // NAVIGATION VIA SWIPE GESTURE DETECTOR
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
 
@@ -493,9 +428,9 @@
             const deltaX = touchEndCoordX - touchStartCoordX;
             const deltaY = touchEndCoordY - touchStartCoordY;
 
-            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 45) {
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
                 if (deltaX < 0) {
-                    if (activeTabIndex < 3) jumpToTabSegment(activeTabIndex + 1);
+                    if (activeTabIndex < 2) jumpToTabSegment(activeTabIndex + 1);
                 } else {
                     if (activeTabIndex > 0) jumpToTabSegment(activeTabIndex - 1);
                 }
@@ -507,126 +442,33 @@
             const track = document.getElementById('swipe-track');
             track.style.transform = `translateX(-${tabIdx * 100}vw)`;
 
-            const tabsArr = ['all', 'video', 'short', 'post'];
+            const tabsArr = ['all', 'video', 'short'];
             const pills = document.getElementsByClassName('filter-pill');
             for (let p of pills) p.classList.remove('active');
             
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        function triggerUploadModal(targetType) {
+        // NO ACCOUNT REQUIRED - DIRECT UPLOAD TRIGGER SYSTEM
+        function triggerDirectUpload(targetType) {
             activeUploadTargetType = targetType;
-            if (!currentActiveSession) {
-                renderAuthLayout("Identity authorization needed to run secure content deployments.");
-            } else {
-                renderUploadLayout();
-            }
-            document.getElementById('system-modal').style.display = 'flex';
-        }
-
-        function toggleProfileControl() {
-            if (!currentActiveSession) {
-                renderAuthLayout("Root security verification is required to load system studio metrics.");
-            } else {
-                renderProfilePanelLayout();
-            }
-            document.getElementById('system-modal').style.display = 'flex';
-        }
-
-        function renderAuthLayout(statusMessageText) {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
-                <div class="modal-header">Identity Gateway</div>
-                <p style="font-size:13px; text-align:center; color:#555; margin-bottom:20px;">${statusMessageText}</p>
-                
-                <button class="google-auth-btn" onclick="executeGoogleAccountLink()">
-                    <svg style="width:18px; height:18px;" viewBox="0 0 24 24">
-                        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-8.58z"/>
-                        <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.08 1.16-3.14 0-5.8-2.11-6.75-4.96H1.31v3.15C3.29 22.35 7.39 24 12 24z"/>
-                        <path fill="#FBBC05" d="M5.25 14.24A7.18 7.18 0 0 1 5 12c0-.79.13-1.57.38-2.31V6.54H1.31A11.94 11.94 0 0 0 0 12c0 1.92.45 3.74 1.31 5.46l3.94-3.22z"/>
-                        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.39 0 3.29 1.65 1.31 4.75l3.94 3.15c.95-2.85 3.61-4.96 6.75-4.96z"/>
-                    </svg>
-                    <span>Connect with Google Account</span>
-                </button>
-
-                <div class="divider">or use standard credentials</div>
-
+                <div class="modal-header">Upload ${activeUploadTargetType.toUpperCase()} Stream</div>
                 <div class="input-group">
-                    <label class="input-label">Secure Login Email</label>
-                    <input type="email" id="auth-email-field" class="form-control" placeholder="name@domain.com">
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Core Matrix Password</label>
-                    <input type="password" id="auth-pass-field" class="form-control" placeholder="••••••••">
-                </div>
-
-                <div class="status-box status-error" id="box-status-error">❌ Incorrect Credentials! Access Denied.</div>
-                <div class="status-box status-success" id="box-status-success">✅ Login Successful! Entering Platform...</div>
-
-                <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Cancel</button>
-                    <button class="btn-block btn-submit" onclick="executeSecureAuthentication()">Validate Log</button>
-                </div>
-            `;
-        }
-
-        function executeGoogleAccountLink() {
-            alert("Connecting safely via Google Security Auth Matrix Protocol...");
-            currentActiveSession = true;
-            if (activeUploadTargetType !== "") {
-                renderUploadLayout();
-            } else {
-                renderProfilePanelLayout();
-            }
-        }
-
-        // RIGID STRICT RE-MATCH VALIDATION SYSTEM
-        function executeSecureAuthentication() {
-            const emailIn = document.getElementById('auth-email-field').value.trim();
-            const passIn = document.getElementById('auth-pass-field').value;
-            
-            const errBox = document.getElementById('box-status-error');
-            const successBox = document.getElementById('box-status-success');
-
-            errBox.style.display = 'none';
-            successBox.style.display = 'none';
-
-            // Checking exact matching string arrays securely
-            if (emailIn.toLowerCase() === SECURITY_CREDENTIALS.user.toLowerCase() && passIn === SECURITY_CREDENTIALS.pass) {
-                currentActiveSession = true;
-                successBox.style.display = 'block';
-                
-                setTimeout(() => {
-                    if (activeUploadTargetType !== "") {
-                        renderUploadLayout();
-                    } else {
-                        renderProfilePanelLayout();
-                    }
-                }, 800);
-            } else {
-                currentActiveSession = false;
-                errBox.style.display = 'block';
-                document.getElementById('auth-pass-field').value = '';
-            }
-        }
-
-        function renderUploadLayout() {
-            const container = document.getElementById('modal-box-content');
-            container.innerHTML = `
-                <div class="modal-header">Deploy Asset Stream</div>
-                <div class="input-group">
-                    <label class="input-label">Broadcast Custom Title</label>
-                    <input type="text" id="upload-title-field" class="form-control" placeholder="Type alphanumeric title heading...">
-                    <div class="status-box status-error" id="upload-error-block" style="display:none; margin-top:5px; padding:6px;">Data input parameters are empty!</div>
+                    <label class="input-label">Content Title Name</label>
+                    <input type="text" id="upload-title-field" class="form-control" placeholder="Enter stream title heading...">
+                    <div class="error-box" id="upload-error-block">Parameter field cannot remain empty!</div>
                 </div>
                 <div class="modal-actions">
                     <button class="btn-block btn-cancel" onclick="closeSystemModal()">Discard</button>
-                    <button class="btn-block btn-submit" onclick="executeSecureContentUpload()">Publish Live</button>
+                    <button class="btn-block btn-submit" onclick="executeContentPublish()">Publish Live</button>
                 </div>
             `;
+            document.getElementById('system-modal').style.display = 'flex';
         }
 
-        function executeSecureContentUpload() {
+        function executeContentPublish() {
             const titleIn = document.getElementById('upload-title-field').value.trim();
             const err = document.getElementById('upload-error-block');
 
@@ -646,27 +488,26 @@
             rebuildStratifiedGrids();
         }
 
-        function renderProfilePanelLayout() {
+        // PROFILE LAYOUT DESIGNED FOR MOBILE RESPONSIVENESS
+        function openProfilePanelMobile() {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
                 <div class="modal-header">Secured Profile Studio</div>
-                <div style="text-align:center; padding:10px 0;">
-                    <div style="width:70px; height:70px; background:#ff0055; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; margin:0 auto 10px;">RS</div>
-                    <div style="font-weight:800; font-size:16px;">REHAN SIR</div>
-                    <div style="font-size:12px; color:#666;">${SECURITY_CREDENTIALS.user}</div>
-                    <div style="margin-top:10px; background:#e6f9ed; color:#1e7e34; padding:5px 12px; border-radius:15px; font-size:11px; font-weight:700; display:inline-block;">✓ Firewall Integrity Active: +∞ Ultra</div>
+                <div style="text-align:center; padding:15px 0;">
+                    <div style="width:75px; height:75px; background:#ff0055; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:900; margin:0 auto 12px; box-shadow:0 4px 10px rgba(255,0,85,0.3);">RS</div>
+                    <div style="font-weight:800; font-size:18px; color:#111;">REHAN SIR</div>
+                    <div style="font-size:13px; color:#666; margin-top:2px;">Owner & Administrator</div>
+                    
+                    <div style="margin-top:20px; padding:10px; background:#f9f9f9; border-radius:8px; border:1px solid #eee; text-align:left;">
+                        <div style="font-size:11px; font-weight:700; color:#888; text-transform:uppercase;">System Status</div>
+                        <div style="font-size:13px; font-weight:700; color:#1e7e34; margin-top:2px;">✓ Verified Safe Environment</div>
+                    </div>
                 </div>
                 <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Close Console</button>
-                    <button class="btn-block btn-submit" style="background:#ff0055;" onclick="executeProfileLogout()">Secure Exit</button>
+                    <button class="btn-block btn-cancel" style="background:#000000; color:#fff; width:100%;" onclick="closeSystemModal()">Close Console Panel</button>
                 </div>
             `;
-        }
-
-        function executeProfileLogout() {
-            currentActiveSession = false;
-            activeUploadTargetType = "";
-            closeSystemModal();
+            document.getElementById('system-modal').style.display = 'flex';
         }
 
         function closeSystemModal() {
@@ -674,6 +515,7 @@
             activeUploadTargetType = "";
         }
 
+        // ANTI-TAMPER DISCO INTERCEPT DETECTOR
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
