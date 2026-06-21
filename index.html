@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>REYOV - Stream Platform</title>
     <style>
-        /* MASTER STRUCTURE - NO HACK / NO DANGER / SECURE LIGHT ENGINE */
+        /* MASTER LIGHT STRUCTURE - EXTRA SECURE ENGINE */
         body {
             margin: 0;
             padding: 0;
@@ -17,7 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* SPLASH INTRO LAYER */
+        /* SPLASH LAYER */
         .splash-overlay {
             position: fixed;
             top: 0;
@@ -39,7 +39,7 @@
             letter-spacing: 4px;
         }
 
-        /* HEADER FRAME - FIXED AND SECURED */
+        /* FIXED HEADER TRACK FRAME */
         header {
             position: fixed;
             top: 0;
@@ -86,7 +86,7 @@
         }
         .btn {
             padding: 9px 16px;
-            border-radius: 20px;
+            border-radius: 200px;
             border: none;
             font-weight: 700;
             font-size: 12px;
@@ -98,7 +98,7 @@
         .btn-short { background-color: #ff9900; color: white; }
         .btn-profile { background-color: #000000; color: white; }
 
-        /* FIXED TABS FILTER SYSTEM */
+        /* TAB CONTROLLERS */
         .filter-container {
             position: fixed;
             top: 70px;
@@ -120,7 +120,6 @@
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
-            user-select: none;
             transition: background 0.2s, color 0.2s;
         }
         .filter-pill.active {
@@ -128,7 +127,7 @@
             color: white;
         }
 
-        /* HORIZONTAL SWIPE VIEWPORT TRACK ENGINE */
+        /* MOBILE HORIZONTAL SWIPE VIEWPORT */
         .swipe-viewport-wrapper {
             width: 100vw;
             margin-top: 145px; 
@@ -137,7 +136,7 @@
         }
         .swipe-track-container {
             display: flex;
-            width: 300vw; /* 3 Panels: All, Videos, Shorts */
+            width: 300vw; 
             transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
             will-change: transform;
         }
@@ -155,7 +154,7 @@
             padding-left: 10px;
         }
 
-        /* DYNAMIC SCROLL GRID MATRIX */
+        /* GRID RENDERING SYSTEM */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
@@ -184,11 +183,6 @@
             height: 100%;
             object-fit: cover;
         }
-        .media-preview-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
         .media-info {
             padding: 12px;
         }
@@ -206,14 +200,13 @@
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8.5);
             color: #fff;
             padding: 3px 8px;
             font-size: 10px;
             font-weight: 800;
             border-radius: 4px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .empty-state-container {
@@ -226,12 +219,9 @@
             color: #777777;
             grid-column: 1 / -1;
         }
-        .empty-icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
+        .empty-icon { font-size: 50px; margin-bottom: 10px; }
 
-        /* POPUP MODAL ARCHITECTURE */
+        /* CORE MODAL OVERLAYS */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -247,12 +237,14 @@
         }
         .modal-box {
             background: #ffffff;
-            width: 90%;
-            max-width: 420px;
+            width: 92%;
+            max-width: 440px;
             border-radius: 16px;
-            padding: 25px;
+            padding: 24px;
             box-sizing: border-box;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-height: 88vh;
+            overflow-y: auto;
         }
         .modal-header {
             font-size: 20px;
@@ -261,9 +253,7 @@
             color: #111111;
             text-align: center;
         }
-        .input-group {
-            margin-bottom: 15px;
-        }
+        .input-group { margin-bottom: 15px; }
         .input-label {
             display: block;
             font-size: 12px;
@@ -281,36 +271,86 @@
             outline: none;
             box-sizing: border-box;
         }
-        .error-box {
-            background-color: #ffe6e6;
-            color: #cc0000;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-top: 8px;
+        
+        /* 10 SECOND TIMER ENGINE LAYOUT */
+        .timer-container {
             text-align: center;
-            display: none;
+            padding: 20px 10px;
         }
-        .modal-actions {
-            margin-top: 20px;
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #ff0055;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* PROFILE INTERFACE STYLING */
+        .profile-pic-container {
+            position: relative;
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 12px;
+        }
+        .profile-pic-view {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0055;
+            background: #eee;
+        }
+        .metric-row {
             display: flex;
-            gap: 10px;
+            justify-content: space-around;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 12px 5px;
+            margin: 15px 0;
+            border: 1px solid #eee;
         }
+        .metric-box { text-align: center; }
+        .metric-val { font-size: 18px; font-weight: 800; color: #ff0055; }
+        .metric-lbl { font-size: 11px; color: #666; font-weight: 600; text-transform: uppercase; }
+
+        .history-list {
+            text-align: left;
+            margin-top: 15px;
+            max-height: 150px;
+            overflow-y: auto;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            padding: 8px 5px;
+            border-bottom: 1px solid #f7f7f7;
+            font-weight: 600;
+        }
+
+        .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
         .btn-block {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 700;
-            cursor: pointer;
-            text-align: center;
-            border: none;
+            flex: 1; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: center; border: none;
         }
         .btn-submit { background: #000000; color: white; }
         .btn-cancel { background: #f0f0f0; color: #333333; }
+        
+        /* HIDDEN ELEMENT STORAGE */
+        .hidden-file-input { display: none !important; }
     </style>
 </head>
 <body>
+
+    <input type="file" id="media-file-selector" class="hidden-file-input" accept="video/*">
+    <input type="file" id="profile-pic-selector" class="hidden-file-input" accept="image/*" onchange="executeProfilePicUpdate(this)">
 
     <div class="splash-overlay" id="splash-screen">
         <div class="splash-logo">REYOV</div>
@@ -324,8 +364,8 @@
             <input type="text" class="search-input" placeholder="Search parameters..." id="search-core">
         </div>
         <div class="action-buttons">
-            <button class="btn btn-video" onclick="triggerDirectUpload('video')">📹 VIDEO</button>
-            <button class="btn btn-short" onclick="triggerDirectUpload('short')">🎬 SHORT</button>
+            <button class="btn btn-video" onclick="initiateDirectUploadSystem('video')">📹 VIDEO</button>
+            <button class="btn btn-short" onclick="initiateDirectUploadSystem('short')">🎬 SHORT</button>
             <button class="btn btn-profile" onclick="openProfilePanelMobile()">👤 PROFILE</button>
         </div>
     </header>
@@ -363,13 +403,19 @@
 
     <script>
         let activeTabIndex = 0;
-        let activeUploadTargetType = "";
+        let pendingUploadType = "";
+        let selectedFileBlobUrl = "";
         let dynamicLocalMemoryDB = []; 
 
-        let touchStartCoordX = 0;
-        let touchEndCoordX = 0;
-        let touchStartCoordY = 0;
-        let touchEndCoordY = 0;
+        // SAVING REHAN SIR USER DATA DEFAULTS
+        let profileConfigState = {
+            name: "REHAN SIR",
+            picData: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23ff0055'/><text x='50%' y='60%' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>RS</text></svg>",
+            subscribers: "1.2M",
+            likes: "450K"
+        };
+
+        let touchStartCoordX = 0, touchEndCoordX = 0, touchStartCoordY = 0, touchEndCoordY = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -382,9 +428,10 @@
             
             rebuildStratifiedGrids();
             setupTouchNavigationListeners();
+            setupFileSelectionTriggers();
         });
 
-        // GRID GENERATOR ENGINE (FIXED TO PLAY ACTUAL VIDEOS/LINKS)
+        // GRID GENERATOR FOR VIDEO ELEMENTS
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short'];
             
@@ -403,31 +450,21 @@
                         <div class="empty-state-container">
                             <div class="empty-icon">📂</div>
                             <div style="font-weight:800; font-size:17px; color:#111;">No Transmissions Found</div>
-                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform is empty. Use buttons above to launch custom video or short streams.</div>
+                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform is empty. Use buttons above to choose file and launch streams.</div>
                         </div>
                     `;
                 } else {
                     filtered.forEach(item => {
                         const card = document.createElement('div');
                         card.className = 'media-card';
-                        
-                        let mediaElement = '';
-                        // Checking if url is a video format link
-                        if (item.url.match(/\.(mp4|webm|ogg)$/i) || item.url.includes('stream') || item.url.startsWith('data:video')) {
-                            mediaElement = `<video src="${item.url}" controls playsinline preload="metadata"></video>`;
-                        } else {
-                            // Uses a visual clean backup thumbnail container if link isn't directly a video format
-                            mediaElement = `<img src="${item.url}" alt="Thumbnail">`;
-                        }
-
                         card.innerHTML = `
                             <div class="media-preview-box">
                                 <span class="badge-type">${item.type}</span>
-                                ${mediaElement}
+                                <video src="${item.url}" controls playsinline></video>
                             </div>
                             <div class="media-info">
                                 <div class="media-title">${escapeSecurityHTML(item.title)}</div>
-                                <div class="media-meta">Broadcast Feed • Live Upload Track</div>
+                                <div class="media-meta">Published By: ${escapeSecurityHTML(profileConfigState.name)}</div>
                             </div>
                         `;
                         targetGrid.appendChild(card);
@@ -440,10 +477,9 @@
             return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
-        // NAVIGATION VIA SWIPE GESTURE DETECTOR
+        // CONTROL REGULAR TOUCH SWIPE ACTIONS
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
-
             viewArea.addEventListener('touchstart', (e) => {
                 touchStartCoordX = e.changedTouches[0].screenX;
                 touchStartCoordY = e.changedTouches[0].screenY;
@@ -459,7 +495,6 @@
         function evaluateTouchMovementSwipe() {
             const deltaX = touchEndCoordX - touchStartCoordX;
             const deltaY = touchEndCoordY - touchStartCoordY;
-
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
                 if (deltaX < 0) {
                     if (activeTabIndex < 2) jumpToTabSegment(activeTabIndex + 1);
@@ -471,94 +506,174 @@
 
         function jumpToTabSegment(tabIdx) {
             activeTabIndex = tabIdx;
-            const track = document.getElementById('swipe-track');
-            track.style.transform = `translateX(-${tabIdx * 100}vw)`;
-
+            document.getElementById('swipe-track').style.transform = `translateX(-${tabIdx * 100}vw)`;
             const tabsArr = ['all', 'video', 'short'];
             const pills = document.getElementsByClassName('filter-pill');
             for (let p of pills) p.classList.remove('active');
-            
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        // DIRECT LIVE UPLOAD SYSTEM (FIXED URL SOURCE MAPPING)
-        function triggerDirectUpload(targetType) {
-            activeUploadTargetType = targetType;
+        // REDIRECT TO OPERATIONAL FILE SELECTION SYSTEM FOR VIDEOS
+        function setupFileSelectionTriggers() {
+            const fileSelector = document.getElementById('media-file-selector');
+            fileSelector.addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    const fileObj = this.files[0];
+                    selectedFileBlobUrl = URL.createObjectURL(fileObj);
+                    openUploadConfirmationModal(fileObj.name);
+                }
+            });
+        }
+
+        function initiateDirectUploadSystem(type) {
+            pendingUploadType = type;
+            document.getElementById('media-file-selector').click();
+        }
+
+        // CONFIRM DIALOG WITH TITLE BEFORE TRIGGERING 10s TIMER
+        function openUploadConfirmationModal(fileNameString) {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
-                <div class="modal-header">Upload ${activeUploadTargetType.toUpperCase()} Stream</div>
+                <div class="modal-header">Confirm Stream Asset</div>
                 <div class="input-group">
-                    <label class="input-label">Content Title Name</label>
-                    <input type="text" id="upload-title-field" class="form-control" placeholder="Enter stream title heading...">
+                    <label class="input-label">Media File Source</label>
+                    <div style="font-size:13px; color:#444; font-weight:700; background:#f4f4f4; padding:10px; border-radius:6px; word-break:break-all;">📁 ${fileNameString}</div>
                 </div>
                 <div class="input-group">
-                    <label class="input-label">Video URL / Link (Optional)</label>
-                    <input type="text" id="upload-url-field" class="form-control" placeholder="Paste .mp4 link or video track url...">
-                    <div class="error-box" id="upload-error-block">Title field cannot remain empty!</div>
+                    <label class="input-label">Asset View Heading Title</label>
+                    <input type="text" id="asset-confirm-title" class="form-control" value="New Broadcast ${pendingUploadType.toUpperCase()}">
                 </div>
                 <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Discard</button>
-                    <button class="btn-block btn-submit" onclick="executeContentPublish()">Publish Live</button>
+                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Cancel</button>
+                    <button class="btn-block btn-submit" onclick="executeDelayedDeploymentQueue()">Confirm Deploy</button>
                 </div>
             `;
             document.getElementById('system-modal').style.display = 'flex';
         }
 
-        function executeContentPublish() {
-            const titleIn = document.getElementById('upload-title-field').value.trim();
-            let urlIn = document.getElementById('upload-url-field').value.trim();
-            const err = document.getElementById('upload-error-block');
+        // 10 SECOND STRICT WAIT TIME ENGINE
+        function executeDelayedDeploymentQueue() {
+            const titleValue = document.getElementById('asset-confirm-title').value.trim() || "Untitled Stream";
+            const container = document.getElementById('modal-box-content');
+            
+            let secondsRemaining = 10;
+            container.innerHTML = `
+                <div class="timer-container">
+                    <div class="spinner"></div>
+                    <div style="font-weight:900; font-size:20px; color:#111;">Deploying Live Stream</div>
+                    <p style="font-size:13px; color:#666; margin:8px 0 15px;">Processing raw bits safely into framework storage matrices...</p>
+                    <div style="font-size:32px; font-weight:900; color:#ff0055;" id="live-countdown-clock">10s</div>
+                </div>
+            `;
 
-            if (titleIn === "") {
-                err.style.display = 'block';
-                return;
-            }
+            const clockInterval = setInterval(() => {
+                secondsRemaining--;
+                const clockView = document.getElementById('live-countdown-clock');
+                if (clockView) clockView.innerText = `${secondsRemaining}s`;
 
-            // Fallback mock dynamic thumbnail if no URL provided
-            if (urlIn === "") {
-                urlIn = "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&auto=format&fit=crop";
-            }
+                if (secondsRemaining <= 0) {
+                    clearInterval(clockInterval);
+                    
+                    // Injection of active file object into application lists
+                    dynamicLocalMemoryDB.unshift({
+                        id: Date.now(),
+                        type: pendingUploadType,
+                        title: titleValue,
+                        url: selectedFileBlobUrl
+                    });
 
-            dynamicLocalMemoryDB.unshift({
-                id: Date.now(),
-                type: activeUploadTargetType,
-                title: titleIn,
-                url: urlIn
-            });
-
-            activeUploadTargetType = "";
-            closeSystemModal();
-            rebuildStratifiedGrids();
+                    closeSystemModal();
+                    rebuildStratifiedGrids();
+                }
+            }, 1000);
         }
 
-        // PROFILE LAYOUT 
+        // SECURE ACCOUNT MODAL PROFILE PROFILE CONTROLLER
         function openProfilePanelMobile() {
             const container = document.getElementById('modal-box-content');
+            
+            // Build dynamic list of clips uploaded by current profile setting
+            let uploadedHistoryHTML = "";
+            if (dynamicLocalMemoryDB.length === 0) {
+                uploadedHistoryHTML = `<div style="font-size:12px; color:#888; text-align:center; padding:10px 0;">No active logs posted yet.</div>`;
+            } else {
+                dynamicLocalMemoryDB.forEach(item => {
+                    uploadedHistoryHTML += `
+                        <div class="history-item">
+                            <span>🎬 ${escapeSecurityHTML(item.title)}</span>
+                            <span style="color:#ff0055; font-size:11px; text-transform:uppercase;">${item.type}</span>
+                        </div>
+                    `;
+                });
+            }
+
             container.innerHTML = `
-                <div class="modal-header">Secured Profile Studio</div>
-                <div style="text-align:center; padding:15px 0;">
-                    <div style="width:75px; height:75px; background:#ff0055; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:26px; font-weight:900; margin:0 auto 12px; box-shadow:0 4px 10px rgba(255,0,85,0.3);">RS</div>
-                    <div style="font-weight:800; font-size:18px; color:#111;">REHAN SIR</div>
-                    <div style="font-size:13px; color:#666; margin-top:2px;">Owner & Administrator</div>
+                <div class="modal-header">Profile Studio Admin</div>
+                <div style="text-align:center;">
                     
-                    <div style="margin-top:20px; padding:10px; background:#f9f9f9; border-radius:8px; border:1px solid #eee; text-align:left;">
-                        <div style="font-size:11px; font-weight:700; color:#888; text-transform:uppercase;">System Status</div>
-                        <div style="font-size:13px; font-weight:700; color:#1e7e34; margin-top:2px;">✓ Verified Safe Environment</div>
+                    <div class="profile-pic-container" onclick="triggerProfileImageSelection()">
+                        <img src="${profileConfigState.picData}" class="profile-pic-view" id="panel-avatar-img">
+                        <div style="position:absolute; bottom:0; right:0; background:#000; color:#fff; width:24px; height:24px; border-radius:50%; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">+</div>
                     </div>
+
+                    <div class="input-group" style="max-width:260px; margin:0 auto 10px;">
+                        <input type="text" id="profile-name-modifier" class="form-control" style="text-align:center; font-weight:800; font-size:16px; padding:6px 10px;" value="${escapeSecurityHTML(profileConfigState.name)}" oninput="saveLiveProfileIdentityState()">
+                    </div>
+
+                    <div class="metric-row">
+                        <div class="metric-box">
+                            <div class="metric-val">${profileConfigState.subscribers}</div>
+                            <div class="metric-lbl">Subscribers</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-val">${profileConfigState.likes}</div>
+                            <div class="metric-lbl">Total Likes</div>
+                        </div>
+                    </div>
+
+                    <div style="text-align:left; font-size:12px; font-weight:800; color:#333; text-transform:uppercase; margin-top:15px;">My Uploaded Transmissions</div>
+                    <div class="history-list">${uploadedHistoryHTML}</div>
+
                 </div>
                 <div class="modal-actions">
-                    <button class="btn-block btn-cancel" style="background:#000000; color:#fff; width:100%;" onclick="closeSystemModal()">Close Console Panel</button>
+                    <button class="btn-block btn-cancel" style="background:#000000; color:#fff; width:100%;" onclick="closeSystemModal()">Close Studio Panel</button>
                 </div>
             `;
             document.getElementById('system-modal').style.display = 'flex';
+        }
+
+        // SELECTION HANDLER FOR CUSTOM AVATARS
+        function triggerProfileImageSelection() {
+            document.getElementById('profile-pic-selector').click();
+        }
+
+        function executeProfilePicUpdate(inputEl) {
+            if (inputEl.files && inputEl.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileConfigState.picData = e.target.result;
+                    const avatarNode = document.getElementById('panel-avatar-img');
+                    if (avatarNode) avatarNode.src = e.target.result;
+                    rebuildStratifiedGrids(); // Updates publisher info across grids dynamically
+                };
+                reader.readAsDataURL(inputEl.files[0]);
+            }
+        }
+
+        function saveLiveProfileIdentityState() {
+            const currentName = document.getElementById('profile-name-modifier').value.trim();
+            if (currentName !== "") {
+                profileConfigState.name = currentName;
+                rebuildStratifiedGrids(); // Hot reload titles to map new name
+            }
         }
 
         function closeSystemModal() {
             document.getElementById('system-modal').style.display = 'none';
-            activeUploadTargetType = "";
+            pendingUploadType = "";
         }
 
-        // ANTI-TAMPER
+        // PROTECTION DEBAR INTERCEPTS
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
