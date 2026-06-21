@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>REYOV - Stream Platform</title>
+    <title>REYOV - Ultimate Stream Engine</title>
     <style>
-        /* MASTER LIGHT STRUCTURE - EXTRA SECURE ENGINE */
+        /* CORE REYOV ROOT CONSTRUCT MATRIX */
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
+            background-color: #fafafa;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #000000;
             overflow-x: hidden;
@@ -17,7 +17,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* SPLASH LAYER */
+        /* SCREEN SPLASH FRAMEWORK */
         .splash-overlay {
             position: fixed;
             top: 0;
@@ -25,21 +25,21 @@
             width: 100vw;
             height: 100vh;
             background: #000000;
-            z-index: 2500;
+            z-index: 3000;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             transition: opacity 0.4s ease;
         }
         .splash-logo {
-            font-size: 46px;
+            font-size: 48px;
             font-weight: 900;
             color: #ff0055;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
+            text-shadow: 0 4px 15px rgba(255,0,85,0.4);
         }
 
-        /* FIXED HEADER TRACK FRAME */
+        /* LOCKED MAIN FIXED HEADER FRAME */
         header {
             position: fixed;
             top: 0;
@@ -47,7 +47,7 @@
             width: 100%;
             height: 70px;
             background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -55,27 +55,24 @@
             box-sizing: border-box;
             z-index: 1500;
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
         .logo-text {
             color: #ff0055;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 900;
             text-decoration: none;
+            letter-spacing: 1px;
         }
         .search-bar-container {
             flex: 1;
-            max-width: 500px;
+            max-width: 450px;
             margin: 0 15px;
         }
         .search-input {
             width: 100%;
-            padding: 10px 18px;
+            padding: 11px 20px;
             border-radius: 25px;
-            border: 1px solid #e0e0e0;
-            background-color: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            background-color: #f7f7f7;
             font-size: 14px;
             outline: none;
             box-sizing: border-box;
@@ -85,20 +82,20 @@
             gap: 8px;
         }
         .btn {
-            padding: 9px 16px;
-            border-radius: 200px;
+            padding: 10px 18px;
+            border-radius: 25px;
             border: none;
             font-weight: 700;
             font-size: 12px;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: transform 0.1s, opacity 0.2s;
         }
-        .btn:active { opacity: 0.8; }
+        .btn:active { transform: scale(0.96); opacity: 0.9; }
         .btn-video { background-color: #ff0055; color: white; }
         .btn-short { background-color: #ff9900; color: white; }
         .btn-profile { background-color: #000000; color: white; }
 
-        /* TAB CONTROLLERS */
+        /* ENGINE TAB FILTERS FIXED STATIONS */
         .filter-container {
             position: fixed;
             top: 70px;
@@ -111,69 +108,75 @@
             background: #ffffff;
             z-index: 1400;
             box-sizing: border-box;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #eeeeee;
         }
         .filter-pill {
-            padding: 8px 20px;
+            padding: 9px 22px;
             background-color: #f0f0f0;
-            border-radius: 20px;
+            border-radius: 25px;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.2s, color 0.2s;
+            color: #444;
+            transition: all 0.2s ease;
         }
         .filter-pill.active {
             background-color: #ff0055;
             color: white;
+            box-shadow: 0 4px 10px rgba(255,0,85,0.2);
         }
 
-        /* MOBILE HORIZONTAL SWIPE VIEWPORT */
+        /* HORIZONTAL SWIPE VIEWPORT PIPELINE */
         .swipe-viewport-wrapper {
             width: 100vw;
-            margin-top: 145px; 
+            margin-top: 148px; 
             overflow: hidden;
             position: relative;
         }
         .swipe-track-container {
             display: flex;
             width: 300vw; 
-            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform;
         }
         .view-panel-section {
             width: 100vw;
             box-sizing: border-box;
             padding: 15px;
-            min-height: 75vh;
+            min-height: 80vh;
         }
         .section-title {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 800;
-            margin-bottom: 15px;
-            border-left: 4px solid #ff0055;
-            padding-left: 10px;
+            margin-bottom: 18px;
+            border-left: 5px solid #ff0055;
+            padding-left: 12px;
+            letter-spacing: -0.5px;
         }
 
-        /* GRID RENDERING SYSTEM */
+        /* ULTRA 4K GRID CORE MATRIX CONSTRUCTS */
         .content-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 20px;
-            max-width: 1400px;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 25px;
+            max-width: 1440px;
             margin: 0 auto;
         }
         .media-card {
             background: #ffffff;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+            border: 1px solid #eaeaea;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
+        
+        /* 4K MONITOR RENDER WRAPPERS */
         .media-preview-box {
             width: 100%;
-            height: 180px;
+            height: 195px;
             background: #000000;
             position: relative;
             overflow: hidden;
@@ -182,55 +185,152 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
-        .media-info {
-            padding: 12px;
+        .media-preview-box video.expanded-frame {
+            object-fit: contain !important;
+            background: #050505;
         }
-        .media-title {
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 4px;
-            color: #111111;
+        .custom-thumbnail-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            pointer-events: none;
         }
-        .media-meta {
+        
+        /* ENGAGEMENT MATRIX ROW ARCHITECTURE */
+        .interaction-panel-track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            background: #fdfdfd;
+            border-top: 1px solid #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .engagement-action-btn {
+            padding: 6px 12px;
+            border-radius: 15px;
             font-size: 11px;
-            color: #666666;
+            font-weight: 800;
+            border: 1px solid #e0e0e0;
+            background: #ffffff;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
         }
-        .badge-type {
+        .engagement-action-btn.active-fired {
+            background: #ff0055 !important;
+            color: #ffffff !important;
+            border-color: #ff0055 !important;
+        }
+        
+        /* COMMENT MATRIX ENGINE STRUCT */
+        .comment-module-space {
+            padding: 10px 12px;
+            background: #ffffff;
+        }
+        .comment-feed-box {
+            max-height: 85px;
+            overflow-y: auto;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        .comment-node-row {
+            padding: 4px 0;
+            border-bottom: 1px dashed #f0f0f0;
+            word-break: break-all;
+        }
+        .comment-author-tag { font-weight: 800; color: #ff0055; margin-right: 4px; }
+        
+        .comment-input-row {
+            display: flex;
+            gap: 6px;
+        }
+        .comment-field {
+            flex: 1;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            font-size: 11px;
+            outline: none;
+        }
+        .comment-send-trigger {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* THREE DOT CONTROL HUD SIGNALS */
+        .three-dots-trigger-node {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.75);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 16px;
+            z-index: 5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .badge-type-tag {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0, 0, 0, 0.8.5);
+            background: rgba(255, 0, 85, 0.9);
             color: #fff;
-            padding: 3px 8px;
-            font-size: 10px;
-            font-weight: 800;
-            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 9px;
+            font-weight: 900;
+            border-radius: 6px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 4;
         }
+
+        .media-info { padding: 14px; position: relative; }
+        .media-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: #111; }
+        .media-meta { font-size: 11px; color: #666; font-weight: 600; }
 
         .empty-state-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 70px 20px;
+            padding: 80px 20px;
             text-align: center;
-            color: #777777;
+            color: #777;
             grid-column: 1 / -1;
         }
-        .empty-icon { font-size: 50px; margin-bottom: 10px; }
+        .empty-icon { font-size: 52px; margin-bottom: 12px; }
 
-        /* CORE MODAL OVERLAYS */
+        /* LAYER POPUPS STAGE CONSOLES */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(5px);
+            z-index: 2500;
             display: none;
             justify-content: center;
             align-items: center;
@@ -239,118 +339,62 @@
             background: #ffffff;
             width: 92%;
             max-width: 440px;
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 20px;
+            padding: 26px;
             box-sizing: border-box;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
             max-height: 88vh;
             overflow-y: auto;
         }
-        .modal-header {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: #111111;
-            text-align: center;
-        }
-        .input-group { margin-bottom: 15px; }
-        .input-label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #555555;
-            text-transform: uppercase;
-        }
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #cccccc;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            box-sizing: border-box;
-        }
-        
-        /* 10 SECOND TIMER ENGINE LAYOUT */
-        .timer-container {
-            text-align: center;
-            padding: 20px 10px;
-        }
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #ff0055;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* PROFILE INTERFACE STYLING */
-        .profile-pic-container {
-            position: relative;
-            width: 85px;
-            height: 85px;
-            margin: 0 auto 12px;
-        }
-        .profile-pic-view {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ff0055;
-            background: #eee;
-        }
-        .metric-row {
-            display: flex;
-            justify-content: space-around;
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 12px 5px;
-            margin: 15px 0;
-            border: 1px solid #eee;
-        }
-        .metric-box { text-align: center; }
-        .metric-val { font-size: 18px; font-weight: 800; color: #ff0055; }
-        .metric-lbl { font-size: 11px; color: #666; font-weight: 600; text-transform: uppercase; }
-
-        .history-list {
-            text-align: left;
-            margin-top: 15px;
-            max-height: 150px;
-            overflow-y: auto;
-            border-top: 1px solid #eee;
-            padding-top: 10px;
-        }
-        .history-item {
+        .modal-header-container {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
-            padding: 8px 5px;
-            border-bottom: 1px solid #f7f7f7;
-            font-weight: 600;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f5f5f5;
+            padding-bottom: 10px;
         }
+        .modal-header-text { font-size: 19px; font-weight: 900; color: #111; }
+        .btn-top-save { background: #1e7e34; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-weight: 700; font-size: 12px; cursor: pointer; }
+
+        .input-group { margin-bottom: 16px; }
+        .input-label { display: block; font-size: 11px; font-weight: 800; margin-bottom: 6px; color: #555; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-control { width: 100%; padding: 12px 14px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; box-sizing: border-box; }
+        
+        /* VISIBILITY SELECTOR PILLS */
+        .visibility-pills-row { display: flex; gap: 10px; margin-top: 5px; }
+        .visibility-pill-btn { flex: 1; padding: 12px; border: 2px solid #eee; background: #fff; font-weight: 800; border-radius: 8px; text-align: center; cursor: pointer; font-size: 13px; }
+        .visibility-pill-btn.selected-status { border-color: #ff0055 !important; color: #ff0055 !important; background: #fff5f7 !important; }
+
+        /* LOADING ANIMATION SPIN ENGINE */
+        .timer-container { text-align: center; padding: 25px 10px; }
+        .spinner { width: 44px; height: 44px; border: 4px solid #f3f3f3; border-top: 4px solid #ff0055; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* STUDIO COMPONENT METRICS ARCHIVE */
+        .profile-pic-container { position: relative; width: 85px; height: 85px; margin: 0 auto 12px; cursor: pointer; }
+        .profile-pic-view { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #ff0055; background: #eee; }
+        .metric-row { display: flex; justify-content: space-around; background: #f8f9fa; border-radius: 12px; padding: 14px 5px; margin: 15px 0; border: 1px solid #eaeaea; }
+        .metric-box { text-align: center; }
+        .metric-val { font-size: 19px; font-weight: 900; color: #ff0055; }
+        .metric-lbl { font-size: 11px; color: #666; font-weight: 700; text-transform: uppercase; }
+
+        .history-list { text-align: left; margin-top: 15px; max-height: 160px; overflow-y: auto; border-top: 1px solid #eee; padding-top: 10px; }
+        .history-item { display: flex; justify-content: space-between; font-size: 13px; padding: 9px 5px; border-bottom: 1px solid #f9f9f9; font-weight: 700; }
 
         .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-        .btn-block {
-            flex: 1; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: center; border: none;
-        }
+        .btn-block { flex: 1; padding: 12px; border-radius: 8px; font-weight: 700; cursor: pointer; text-align: center; border: none; }
         .btn-submit { background: #000000; color: white; }
         .btn-cancel { background: #f0f0f0; color: #333333; }
         
-        /* HIDDEN ELEMENT STORAGE */
-        .hidden-file-input { display: none !important; }
+        .hidden-storage-nodes { display: none !important; }
     </style>
 </head>
 <body>
 
-    <input type="file" id="media-file-selector" class="hidden-file-input" accept="video/*">
-    <input type="file" id="profile-pic-selector" class="hidden-file-input" accept="image/*" onchange="executeProfilePicUpdate(this)">
+    <input type="file" id="media-file-selector" class="hidden-storage-nodes" accept="video/*">
+    <input type="file" id="profile-pic-selector" class="hidden-storage-nodes" accept="image/*" onchange="processAvatarFileInjected(this)">
+    <input type="file" id="thvip-file-selector" class="hidden-storage-nodes" accept="image/*" onchange="processThvipImageSelected(this)">
 
     <div class="splash-overlay" id="splash-screen">
         <div class="splash-logo">REYOV</div>
@@ -364,9 +408,9 @@
             <input type="text" class="search-input" placeholder="Search parameters..." id="search-core">
         </div>
         <div class="action-buttons">
-            <button class="btn btn-video" onclick="initiateDirectUploadSystem('video')">📹 VIDEO</button>
-            <button class="btn btn-short" onclick="initiateDirectUploadSystem('short')">🎬 SHORT</button>
-            <button class="btn btn-profile" onclick="openProfilePanelMobile()">👤 PROFILE</button>
+            <button class="btn btn-video" onclick="triggerDeviceMediaFileLookup('video')">📹 VIDEO</button>
+            <button class="btn btn-short" onclick="triggerDeviceMediaFileLookup('short')">🎬 SHORT</button>
+            <button class="btn btn-profile" onclick="openProfileStudioPanel()">👤 PROFILE</button>
         </div>
     </header>
 
@@ -405,14 +449,29 @@
         let activeTabIndex = 0;
         let pendingUploadType = "";
         let selectedFileBlobUrl = "";
+        
+        // REYOV DATABASE STORAGE REAL STACK (INITIALIZED WITH 0)
         let dynamicLocalMemoryDB = []; 
+        let globalSystemLikesCount = 0;
+        let globalSystemSubsCount = 0;
 
-        // SAVING REHAN SIR USER DATA DEFAULTS
+        // EDIT CONSOLE TRANSACTION LAYER BUFFER ENGINE
+        let editStageBufferState = {
+            targetItemId: null,
+            tempTitle: "",
+            tempVisibility: "publish",
+            tempThvipUrl: ""
+        };
+
+        // TRACK TRACKERS FOR UNIQUE USER INTERACTIONS PER MEDIA CARDS
+        let userEngagementRegistry = {
+            likesTrack: {},
+            subsTrack: {}
+        };
+
         let profileConfigState = {
             name: "REHAN SIR",
-            picData: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23ff0055'/><text x='50%' y='60%' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>RS</text></svg>",
-            subscribers: "1.2M",
-            likes: "450K"
+            picData: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%23ff0055'/><text x='50%' y='60%' font-size='28' font-weight='bold' fill='white' text-anchor='middle'>RS</text></svg>"
         };
 
         let touchStartCoordX = 0, touchEndCoordX = 0, touchStartCoordY = 0, touchEndCoordY = 0;
@@ -431,7 +490,7 @@
             setupFileSelectionTriggers();
         });
 
-        // GRID GENERATOR FOR VIDEO ELEMENTS
+        // 4K REBUILD CORE GENERATOR MATRIX ENGINE
         function rebuildStratifiedGrids() {
             const categories = ['all', 'video', 'short'];
             
@@ -440,7 +499,9 @@
                 if (!targetGrid) return;
                 targetGrid.innerHTML = '';
 
+                // Filtering visibility parameters (Hide private tracks from public stream grids)
                 let filtered = dynamicLocalMemoryDB.filter(item => {
+                    if (item.visibility === 'private') return false;
                     if (cat === 'all') return true;
                     return item.type === cat;
                 });
@@ -449,22 +510,68 @@
                     targetGrid.innerHTML = `
                         <div class="empty-state-container">
                             <div class="empty-icon">📂</div>
-                            <div style="font-weight:800; font-size:17px; color:#111;">No Transmissions Found</div>
-                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform is empty. Use buttons above to choose file and launch streams.</div>
+                            <div style="font-weight:800; font-size:16px; color:#111;">No Transmissions Live</div>
+                            <div style="font-size:12px; margin-top:5px; color:#777;">Platform database reads 0 records. Add ultra media clips above to deploy tracks.</div>
                         </div>
                     `;
                 } else {
                     filtered.forEach(item => {
                         const card = document.createElement('div');
                         card.className = 'media-card';
+                        
+                        // Condition check to verify unique single click engagement state
+                        const isLiked = userEngagementRegistry.likesTrack[item.id] ? 'active-fired' : '';
+                        const isSubbed = userEngagementRegistry.subsTrack[item.id] ? 'active-fired' : '';
+
+                        // Check if THVIP custom thumbnail overlay is attached
+                        let thvipImageTag = item.thvip ? `<img src="${item.thvip}" class="custom-thumbnail-layer" id="thvip-layer-${item.id}">` : '';
+
+                        // Generate unique comments list elements
+                        let compiledCommentsHTML = '';
+                        item.comments.forEach(c => {
+                            compiledCommentsHTML += `
+                                <div class="comment-node-row">
+                                    <span class="comment-author-tag">${escapeSecurityHTML(c.user)}:</span>
+                                    <span>${escapeSecurityHTML(c.text)}</span>
+                                </div>
+                            `;
+                        });
+
                         card.innerHTML = `
-                            <div class="media-preview-box">
-                                <span class="badge-type">${item.type}</span>
-                                <video src="${item.url}" controls playsinline></video>
+                            <div class="badge-type-tag">${item.type}</div>
+                            
+                            <div class="three-dots-trigger-node" onclick="openVideoStructuralAdminHUD(${item.id})">⋮</div>
+                            
+                            <div class="media-preview-box" id="box-wrapper-${item.id}">
+                                ${thvipImageTag}
+                                <video src="${item.url}" id="video-core-node-${item.id}" playsinline loop onplay="hideThvipOverlayPreview(${item.id})"></video>
                             </div>
+
                             <div class="media-info">
-                                <div class="media-title">${escapeSecurityHTML(item.title)}</div>
-                                <div class="media-meta">Published By: ${escapeSecurityHTML(profileConfigState.name)}</div>
+                                <div class="media-title" id="display-title-render-${item.id}">${escapeSecurityHTML(item.title)}</div>
+                                <div class="media-meta">Author Channel: ${escapeSecurityHTML(profileConfigState.name)}</div>
+                            </div>
+
+                            <div class="interaction-panel-track">
+                                <button class="engagement-action-btn ${isLiked}" onclick="executeLiveCardLikeAction(${item.id}, this)">
+                                    👍 Like (<span id="like-counter-view-${item.id}">${item.likes}</span>)
+                                </button>
+                                <button class="engagement-action-btn ${isSubbed}" onclick="executeLiveCardSubsAction(${item.id}, this)">
+                                    🔔 Subscribe
+                                </button>
+                                <button class="engagement-action-btn" style="background:#000; color:#fff;" onclick="toggleScreenFrameSize(${item.id})">
+                                    📺 Resize Frame
+                                </button>
+                            </div>
+
+                            <div class="comment-module-space">
+                                <div class="comment-feed-box" id="comment-feed-target-${item.id}">
+                                    ${compiledCommentsHTML || '<div style="color:#aaa; font-size:10px; padding:2px 0;">No transmission comments logged.</div>'}
+                                </div>
+                                <div class="comment-input-row">
+                                    <input type="text" class="comment-field" id="comment-input-field-${item.id}" placeholder="Write open comment structural entry...">
+                                    <button class="comment-send-trigger" onclick="dispatchGlobalCommentBroadcast(${item.id})">Send</button>
+                                </div>
                             </div>
                         `;
                         targetGrid.appendChild(card);
@@ -474,10 +581,70 @@
         }
 
         function escapeSecurityHTML(str) {
-            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
+            return str ? str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)) : '';
         }
 
-        // CONTROL REGULAR TOUCH SWIPE ACTIONS
+        function hideThvipOverlayPreview(itemId) {
+            const overlay = document.getElementById(`thvip-layer-${itemId}`);
+            if (overlay) overlay.style.display = 'none';
+        }
+
+        // CONTROL FRAME MATRIX SIZE MANIPULATIONS
+        function toggleScreenFrameSize(itemId) {
+            const videoNode = document.getElementById(`video-core-node-${itemId}`);
+            const wrapperBox = document.getElementById(`box-wrapper-${itemId}`);
+            if (videoNode && wrapperBox) {
+                if (videoNode.classList.contains('expanded-frame')) {
+                    videoNode.classList.remove('expanded-frame');
+                    wrapperBox.style.height = '195px';
+                } else {
+                    videoNode.classList.add('expanded-frame');
+                    wrapperBox.style.height = '320px'; // Expanded dimension footprint
+                }
+            }
+        }
+
+        // ONE TIME CLICK RE-ROUTING ENGAGEMENT LIKE MATHS
+        function executeLiveCardLikeAction(itemId, elementNode) {
+            if (userEngagementRegistry.likesTrack[itemId]) return; // Execution blocked after 1 initial fire
+            
+            let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
+            if (itemObj) {
+                itemObj.likes += 1;
+                globalSystemLikesCount += 1;
+                userEngagementRegistry.likesTrack[itemId] = true;
+                
+                elementNode.classList.add('active-fired');
+                document.getElementById(`like-counter-view-${itemId}`).innerText = itemObj.likes;
+            }
+        }
+
+        function executeLiveCardSubsAction(itemId, elementNode) {
+            if (userEngagementRegistry.subsTrack[itemId]) return; // Execution blocked after 1 initial fire
+            
+            globalSystemSubsCount += 1;
+            userEngagementRegistry.subsTrack[itemId] = true;
+            elementNode.classList.add('active-fired');
+        }
+
+        // ROUTE OPEN GLOBAL COMMENT ENTRY
+        function dispatchGlobalCommentBroadcast(itemId) {
+            const inputField = document.getElementById(`comment-input-field-${itemId}`);
+            const textData = inputField.value.trim();
+            if (textData === "") return;
+
+            let itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
+            if (itemObj) {
+                itemObj.comments.push({
+                    user: profileConfigState.name,
+                    text: textData
+                });
+                inputField.value = "";
+                rebuildStratifiedGrids(); // Hot sync comment streams globally across channels
+            }
+        }
+
+        // CONTROL SWIPE MECHANICS
         function setupTouchNavigationListeners() {
             const viewArea = document.getElementById('swipe-area-viewport');
             viewArea.addEventListener('touchstart', (e) => {
@@ -513,73 +680,56 @@
             document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
-        // REDIRECT TO OPERATIONAL FILE SELECTION SYSTEM FOR VIDEOS
+        // DIRECT AUTOMATED FILE CAPTURE CAPABILITIES
         function setupFileSelectionTriggers() {
             const fileSelector = document.getElementById('media-file-selector');
-            fileSelector.addEventListener('change', function(e) {
+            fileSelector.addEventListener('change', function() {
                 if (this.files && this.files[0]) {
                     const fileObj = this.files[0];
                     selectedFileBlobUrl = URL.createObjectURL(fileObj);
-                    openUploadConfirmationModal(fileObj.name);
+                    trigger10SecondDelayedDeployment(fileObj.name);
                 }
             });
         }
 
-        function initiateDirectUploadSystem(type) {
+        function triggerDeviceMediaFileLookup(type) {
             pendingUploadType = type;
             document.getElementById('media-file-selector').click();
         }
 
-        // CONFIRM DIALOG WITH TITLE BEFORE TRIGGERING 10s TIMER
-        function openUploadConfirmationModal(fileNameString) {
+        // MANDATORY 10 SECOND 4K PROCESSING PIPELINE LOADING SCREEN
+        function trigger10SecondDelayedDeployment(fileName) {
             const container = document.getElementById('modal-box-content');
-            container.innerHTML = `
-                <div class="modal-header">Confirm Stream Asset</div>
-                <div class="input-group">
-                    <label class="input-label">Media File Source</label>
-                    <div style="font-size:13px; color:#444; font-weight:700; background:#f4f4f4; padding:10px; border-radius:6px; word-break:break-all;">📁 ${fileNameString}</div>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Asset View Heading Title</label>
-                    <input type="text" id="asset-confirm-title" class="form-control" value="New Broadcast ${pendingUploadType.toUpperCase()}">
-                </div>
-                <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Cancel</button>
-                    <button class="btn-block btn-submit" onclick="executeDelayedDeploymentQueue()">Confirm Deploy</button>
-                </div>
-            `;
-            document.getElementById('system-modal').style.display = 'flex';
-        }
-
-        // 10 SECOND STRICT WAIT TIME ENGINE
-        function executeDelayedDeploymentQueue() {
-            const titleValue = document.getElementById('asset-confirm-title').value.trim() || "Untitled Stream";
-            const container = document.getElementById('modal-box-content');
+            let counterTime = 10;
             
-            let secondsRemaining = 10;
             container.innerHTML = `
                 <div class="timer-container">
                     <div class="spinner"></div>
-                    <div style="font-weight:900; font-size:20px; color:#111;">Deploying Live Stream</div>
-                    <p style="font-size:13px; color:#666; margin:8px 0 15px;">Processing raw bits safely into framework storage matrices...</p>
-                    <div style="font-size:32px; font-weight:900; color:#ff0055;" id="live-countdown-clock">10s</div>
+                    <div style="font-weight:900; font-size:20px; color:#111;">Processing 4K UHD Media</div>
+                    <p style="font-size:12px; color:#666; margin:6px 0 16px;">Encoding raw file block streams natively into system framework containers...</p>
+                    <div style="font-size:36px; font-weight:900; color:#ff0055;" id="live-countdown-clock">10s</div>
                 </div>
             `;
+            document.getElementById('system-modal').style.display = 'flex';
 
             const clockInterval = setInterval(() => {
-                secondsRemaining--;
+                counterTime--;
                 const clockView = document.getElementById('live-countdown-clock');
-                if (clockView) clockView.innerText = `${secondsRemaining}s`;
+                if (clockView) clockView.innerText = `${counterTime}s`;
 
-                if (secondsRemaining <= 0) {
+                if (counterTime <= 0) {
                     clearInterval(clockInterval);
                     
-                    // Injection of active file object into application lists
+                    // Create base operational mapping with 0 metrics
                     dynamicLocalMemoryDB.unshift({
                         id: Date.now(),
                         type: pendingUploadType,
-                        title: titleValue,
-                        url: selectedFileBlobUrl
+                        title: "4K Live Transmission Asset",
+                        url: selectedFileBlobUrl,
+                        thvip: "",
+                        visibility: "publish",
+                        likes: 0,
+                        comments: []
                     });
 
                     closeSystemModal();
@@ -588,83 +738,207 @@
             }, 1000);
         }
 
-        // SECURE ACCOUNT MODAL PROFILE PROFILE CONTROLLER
-        function openProfilePanelMobile() {
+        // ADVANCED 3 DOT CONTROL CONSOLE HUD MODAL MANAGERS
+        function openVideoStructuralAdminHUD(itemId) {
+            const itemObj = dynamicLocalMemoryDB.find(i => i.id === itemId);
+            if (!itemObj) return;
+
+            // Load transaction state tracking caches
+            editStageBufferState.targetItemId = itemId;
+            editStageBufferState.tempTitle = itemObj.title;
+            editStageBufferState.tempVisibility = itemObj.visibility;
+            editStageBufferState.tempThvipUrl = itemObj.thvip;
+
+            renderActiveEditHUDStructure();
+        }
+
+        function renderActiveEditHUDStructure() {
             const container = document.getElementById('modal-box-content');
             
-            // Build dynamic list of clips uploaded by current profile setting
+            const isPublishSelected = editStageBufferState.tempVisibility === 'publish' ? 'selected-status' : '';
+            const isPrivateSelected = editStageBufferState.tempVisibility === 'private' ? 'selected-status' : '';
+
+            container.innerHTML = `
+                <div class="modal-header-container">
+                    <div class="modal-header-text">EDIT VIDEO CONSOLE</div>
+                    <button class="btn-top-save" onclick="triggerSaveConfirmationDialog()">SAVE</button>
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">PUBLISH TITLE VIDEO NAME</label>
+                    <input type="text" id="hud-title-editor-field" class="form-control" value="${escapeSecurityHTML(editStageBufferState.tempTitle)}" oninput="syncTitleBufferData(this)">
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">THVIP (CUSTOM THUMBNAIL MANAGER)</label>
+                    <button class="btn-block" style="background:#000; color:#fff; font-size:12px; padding:10px;" onclick="triggerThvipLookupWindow()">🖼️ Open THVIP File Manager</button>
+                    ${editStageBufferState.tempThvipUrl ? `<div style="font-size:10px; color:#1e7e34; font-weight:bold; margin-top:5px; text-align:center;">✓ THVIP Image Attached Successfully</div>` : ''}
+                </div>
+
+                <div class="input-group">
+                    <label class="input-label">VISIBILITY STREAM MATRIX LAYER</label>
+                    <div class="visibility-pills-row">
+                        <div class="visibility-pill-btn ${isPublishSelected}" onclick="updateVisibilityBufferTrack('publish')">PUBLISH</div>
+                        <div class="visibility-pill-btn ${isPrivateSelected}" onclick="updateVisibilityBufferTrack('private')">PRIVATE</div>
+                    </div>
+                </div>
+
+                <div class="modal-actions" style="margin-top:30px;">
+                    <button class="btn-block btn-cancel" style="background:#dc3545; color:#fff;" onclick="triggerDismissConfirmationDialog()">DISMISS INTERFACE</button>
+                </div>
+            `;
+            document.getElementById('system-modal').style.display = 'flex';
+        }
+
+        function syncTitleBufferData(inputNode) {
+            editStageBufferState.tempTitle = inputNode.value;
+        }
+
+        function updateVisibilityBufferTrack(statusString) {
+            editStageBufferState.tempVisibility = statusString;
+            renderActiveEditHUDStructure(); // Instant hot refresh interface nodes state mappings
+        }
+
+        function triggerThvipLookupWindow() {
+            document.getElementById('thvip-file-selector').click();
+        }
+
+        function processThvipImageSelected(inputNode) {
+            if (inputNode.files && inputNode.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    editStageBufferState.tempThvipUrl = e.target.result;
+                    renderActiveEditHUDStructure();
+                };
+                reader.readAsDataURL(inputNode.files[0]);
+            }
+        }
+
+        // DUAL TOGGLE SAVE CONFIRMATION DIALOG MANAGEMENT BALANCES
+        function triggerSaveConfirmationDialog() {
+            const container = document.getElementById('modal-box-content');
+            container.innerHTML = `
+                <div class="timer-container" style="padding:10px;">
+                    <div style="font-size:42px; margin-bottom:10px;">💾</div>
+                    <div style="font-weight:900; font-size:18px; color:#111; margin-bottom:8px;">Confirm System Alterations?</div>
+                    <p style="font-size:12px; color:#555; margin-bottom:20px;">Are you absolutely certain you want to write these modifications securely into backend tracks?</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-block btn-cancel" onclick="renderActiveEditHUDStructure()">Back</button>
+                    <button class="btn-block btn-submit" style="background:#1e7e34;" onclick="executeCommitSaveTransaction()">Confirm Save</button>
+                </div>
+            `;
+        }
+
+        function executeCommitSaveTransaction() {
+            let itemObj = dynamicLocalMemoryDB.find(i => i.id === editStageBufferState.targetItemId);
+            if (itemObj) {
+                itemObj.title = editStageBufferState.tempTitle || "Untitled Track";
+                itemObj.visibility = editStageBufferState.tempVisibility;
+                itemObj.thvip = editStageBufferState.tempThvipUrl;
+            }
+            closeSystemModal();
+            rebuildStratifiedGrids();
+        }
+
+        function triggerDismissConfirmationDialog() {
+            const container = document.getElementById('modal-box-content');
+            container.innerHTML = `
+                <div class="timer-container" style="padding:10px;">
+                    <div style="font-size:42px; margin-bottom:10px;">⚠️</div>
+                    <div style="font-weight:900; font-size:18px; color:#111; margin-bottom:8px;">Dismiss and Discard?</div>
+                    <p style="font-size:12px; color:#555; margin-bottom:20px;">Warning! Dropping out now will drop all current parameter configuration overrides.</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-block btn-cancel" onclick="renderActiveEditHUDStructure()">Return</button>
+                    <button class="btn-block btn-submit" style="background:#dc3545;" onclick="closeSystemModal()">Confirm Dismiss</button>
+                </div>
+            `;
+        }
+
+        // REAL STUDIO ACCOUNT PROFILE METRICS RENDERING ARCHITECTURE
+        function openProfileStudioPanel() {
+            const container = document.getElementById('modal-box-content');
+            
             let uploadedHistoryHTML = "";
-            if (dynamicLocalMemoryDB.length === 0) {
-                uploadedHistoryHTML = `<div style="font-size:12px; color:#888; text-align:center; padding:10px 0;">No active logs posted yet.</div>`;
+            let creatorClipsCount = dynamicLocalMemoryDB.length;
+
+            if (creatorClipsCount === 0) {
+                uploadedHistoryHTML = `<div style="font-size:11px; color:#aaa; text-align:center; padding:12px 0;">Studio database registry reads empty stack entries.</div>`;
             } else {
                 dynamicLocalMemoryDB.forEach(item => {
                     uploadedHistoryHTML += `
                         <div class="history-item">
                             <span>🎬 ${escapeSecurityHTML(item.title)}</span>
-                            <span style="color:#ff0055; font-size:11px; text-transform:uppercase;">${item.type}</span>
+                            <span style="color:#ff0055; font-size:10px; text-transform:uppercase; font-weight:900;">${item.type} (${item.visibility})</span>
                         </div>
                     `;
                 });
             }
 
             container.innerHTML = `
-                <div class="modal-header">Profile Studio Admin</div>
+                <div class="modal-header-container">
+                    <div class="modal-header-text">Profile Studio Admin</div>
+                </div>
                 <div style="text-align:center;">
                     
-                    <div class="profile-pic-container" onclick="triggerProfileImageSelection()">
+                    <div class="profile-pic-container" onclick="triggerProfileAvatarLookup()">
                         <img src="${profileConfigState.picData}" class="profile-pic-view" id="panel-avatar-img">
-                        <div style="position:absolute; bottom:0; right:0; background:#000; color:#fff; width:24px; height:24px; border-radius:50%; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">+</div>
+                        <div style="position:absolute; bottom:0; right:0; background:#ff0055; color:#fff; width:22px; height:22px; border-radius:50%; font-size:12px; font-weight:bold; display:flex; align-items:center; justify-content:center; border:2px solid #fff;">+</div>
                     </div>
 
-                    <div class="input-group" style="max-width:260px; margin:0 auto 10px;">
-                        <input type="text" id="profile-name-modifier" class="form-control" style="text-align:center; font-weight:800; font-size:16px; padding:6px 10px;" value="${escapeSecurityHTML(profileConfigState.name)}" oninput="saveLiveProfileIdentityState()">
+                    <div class="input-group" style="max-width:260px; margin:0 auto 12px;">
+                        <input type="text" id="profile-name-modifier" class="form-control" style="text-align:center; font-weight:900; font-size:16px; padding:6px 10px; border-color:#eaeaea;" value="${escapeSecurityHTML(profileConfigState.name)}" oninput="syncProfileIdentityNameState(this)">
                     </div>
 
                     <div class="metric-row">
                         <div class="metric-box">
-                            <div class="metric-val">${profileConfigState.subscribers}</div>
+                            <div class="metric-val" id="profile-subs-counter-node">${globalSystemSubsCount}</div>
                             <div class="metric-lbl">Subscribers</div>
                         </div>
                         <div class="metric-box">
-                            <div class="metric-val">${profileConfigState.likes}</div>
+                            <div class="metric-val" id="profile-likes-counter-node">${globalSystemLikesCount}</div>
                             <div class="metric-lbl">Total Likes</div>
                         </div>
                     </div>
 
-                    <div style="text-align:left; font-size:12px; font-weight:800; color:#333; text-transform:uppercase; margin-top:15px;">My Uploaded Transmissions</div>
+                    <div style="text-align:left; font-size:11px; font-weight:900; color:#222; text-transform:uppercase; margin-top:20px; letter-spacing:0.5px;">Studio Content Registries (${creatorClipsCount})</div>
                     <div class="history-list">${uploadedHistoryHTML}</div>
 
                 </div>
-                <div class="modal-actions">
-                    <button class="btn-block btn-cancel" style="background:#000000; color:#fff; width:100%;" onclick="closeSystemModal()">Close Studio Panel</button>
+                <div class="modal-actions" style="margin-top:25px;">
+                    <button class="btn-block btn-cancel" style="background:#000000; color:#fff; width:100%; border-radius:10px;" onclick="closeSystemModal()">Close Studio Panel</button>
                 </div>
             `;
             document.getElementById('system-modal').style.display = 'flex';
         }
 
-        // SELECTION HANDLER FOR CUSTOM AVATARS
-        function triggerProfileImageSelection() {
+        function triggerProfileAvatarLookup() {
             document.getElementById('profile-pic-selector').click();
         }
 
-        function executeProfilePicUpdate(inputEl) {
-            if (inputEl.files && inputEl.files[0]) {
+        function processAvatarFileInjected(inputNode) {
+            if (inputNode.files && inputNode.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     profileConfigState.picData = e.target.result;
-                    const avatarNode = document.getElementById('panel-avatar-img');
-                    if (avatarNode) avatarNode.src = e.target.result;
-                    rebuildStratifiedGrids(); // Updates publisher info across grids dynamically
+                    const liveAvatar = document.getElementById('panel-avatar-img');
+                    if (liveAvatar) liveAvatar.src = e.target.result;
+                    rebuildStratifiedGrids(); 
                 };
-                reader.readAsDataURL(inputEl.files[0]);
+                reader.readAsDataURL(inputNode.files[0]);
             }
         }
 
-        function saveLiveProfileIdentityState() {
-            const currentName = document.getElementById('profile-name-modifier').value.trim();
-            if (currentName !== "") {
-                profileConfigState.name = currentName;
-                rebuildStratifiedGrids(); // Hot reload titles to map new name
+        function syncProfileIdentityNameState(inputNode) {
+            const cleanName = inputNode.value.trim();
+            if (cleanName !== "") {
+                profileConfigState.name = cleanName;
+                // Live hot refresh to replace publisher tags instantly across DOM grids
+                const metaLabels = document.querySelectorAll('.media-meta');
+                metaLabels.forEach(lbl => {
+                    lbl.innerText = "Author Channel: " + cleanName;
+                });
             }
         }
 
@@ -673,7 +947,7 @@
             pendingUploadType = "";
         }
 
-        // PROTECTION DEBAR INTERCEPTS
+        // DEV TOOLS PROTECTION BLOCK ENGINE
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
