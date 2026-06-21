@@ -6,7 +6,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob: https://apis.google.com 'unsafe-inline';">
-    <title>REYOV - Infinite Ultra Security Platform</title>
+    <title>REYOV - Infinite Ultra Custom Navigation Platform</title>
     <style>
         /* INFINITY + MEGA + ULTRA SECURITY MASTER MATRIX - NO HACK / NO DANGER / ULTRA SAFE */
         body {
@@ -114,6 +114,10 @@
             justify-content: center;
             gap: 15px;
             padding: 10px;
+            position: sticky;
+            top: 70px;
+            background: #ffffff;
+            z-index: 900;
         }
         .filter-pill {
             padding: 8px 22px;
@@ -123,18 +127,35 @@
             font-weight: 600;
             cursor: pointer;
             user-select: none;
+            transition: background 0.3s, color 0.3s;
         }
         .filter-pill.active {
             background-color: #ff0055;
             color: white;
         }
 
-        /* MAIN CONTENT DASHBOARD */
-        .dashboard-main {
-            padding: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* SWIPE / SCROLL ENGINE SHELL */
+        .swipe-viewport-wrapper {
+            width: 100vw;
+            overflow: hidden;
+            position: relative;
         }
+        
+        .swipe-track-container {
+            display: flex;
+            width: 400vw; /* 4 Viewports for All, Videos, Shorts, Posts */
+            transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        /* VIEWPORT CARD ARCHITECTURE */
+        .view-panel-section {
+            width: 100vw;
+            box-sizing: border-box;
+            padding: 20px;
+            min-height: 80vh;
+        }
+
         .section-title {
             font-size: 20px;
             font-weight: 800;
@@ -142,32 +163,26 @@
             border-left: 4px solid #ff0055;
             padding-left: 10px;
         }
-        .empty-state-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 20px;
-            text-align: center;
-            color: #777777;
-        }
-        .empty-icon {
-            font-size: 64px;
-            margin-bottom: 15px;
-        }
 
-        /* GRID SYSTEM FOR CONTENT */
+        /* INFINITE VERTICAL SCROLL ABILITY GRID */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
+
         .media-card {
             background: #ffffff;
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             border: 1px solid #f0f0f0;
+            transition: transform 0.2s;
+        }
+        .media-card:hover {
+            transform: translateY(-2px);
         }
         .media-preview-box {
             width: 100%;
@@ -193,7 +208,22 @@
             color: #666666;
         }
 
-        /* MODAL WINDOW SYSTEM */
+        .empty-state-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: #777777;
+            grid-column: 1 / -1;
+        }
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        /* MODAL SYSTEM LAYER */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -243,13 +273,12 @@
             font-size: 14px;
             outline: none;
             box-sizing: border-box;
-            transition: border-color 0.2s;
         }
         .form-control:focus {
             border-color: #ff0055;
         }
         
-        /* VALIDATION STATUS INDICATORS */
+        /* VALIDATION LABELS WITH STATUS MATRIX */
         .status-box {
             padding: 12px;
             border-radius: 8px;
@@ -270,7 +299,7 @@
             border: 1px solid #c3e6cb;
         }
 
-        /* GOOGLE SIGN IN BUTTON */
+        /* GOOGLE AUTH BUTTON */
         .google-auth-btn {
             width: 100%;
             padding: 12px;
@@ -285,14 +314,6 @@
             gap: 10px;
             cursor: pointer;
             margin-bottom: 20px;
-            transition: background 0.2s;
-        }
-        .google-auth-btn:hover {
-            background-color: #f7f7f7;
-        }
-        .google-icon {
-            width: 18px;
-            height: 18px;
         }
 
         .modal-actions {
@@ -310,23 +331,9 @@
         }
         .btn-submit { background: #000000; color: white; border: none; }
         .btn-cancel { background: #f0f0f0; color: #333333; border: none; }
-        .divider {
-            text-align: center;
-            margin: 15px 0;
-            font-size: 12px;
-            color: #aaaaaa;
-            position: relative;
-        }
-        .divider::before, .divider::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #e0e0e0;
-        }
-        .divider::before { left: 0; }
-        .divider::after { right: 0; }
+        .divider { text-align: center; margin: 15px 0; font-size: 12px; color: #aaaaaa; position: relative; }
+        .divider::before, .divider::after { content: ""; position: absolute; top: 50%; width: 38%; height: 1px; background: #e0e0e0; }
+        .divider::before { left: 0; } .divider::after { right: 0; }
     </style>
 </head>
 <body>
@@ -340,7 +347,7 @@
             <a href="#" class="logo-text">?? REYOV</a>
         </div>
         <div class="search-bar-container">
-            <input type="text" class="search-input" placeholder="Search verified tracks, creators and logs..." id="search-core">
+            <input type="text" class="search-input" placeholder="Search parameters..." id="search-core">
         </div>
         <div class="action-buttons">
             <button class="btn btn-video" onclick="triggerUploadModal('video')">?? VIDEO</button>
@@ -351,34 +358,59 @@
     </header>
 
     <div class="filter-container">
-        <div class="filter-pill active" id="pill-all" onclick="switchFilterCategory('all')">All Feeds</div>
-        <div class="filter-pill" id="pill-video" onclick="switchFilterCategory('video')">Long Videos</div>
-        <div class="filter-pill" id="pill-short" onclick="switchFilterCategory('short')">Shorts Section</div>
-        <div class="filter-pill" id="pill-post" onclick="switchFilterCategory('post')">Community Posts</div>
+        <div class="filter-pill active" id="pill-all" onclick="jumpToTabSegment(0)">All Feeds</div>
+        <div class="filter-pill" id="pill-video" onclick="jumpToTabSegment(1)">Long Videos</div>
+        <div class="filter-pill" id="pill-short" onclick="jumpToTabSegment(2)">Shorts Section</div>
+        <div class="filter-pill" id="pill-post" onclick="jumpToTabSegment(3)">Community Posts</div>
     </div>
 
-    <main class="dashboard-main">
-        <div class="section-title" id="main-feed-title">All Real-Time Streams</div>
-        <div class="content-grid" id="master-feed-grid">
+    <div class="swipe-viewport-wrapper" id="swipe-area-viewport">
+        <div class="swipe-track-container" id="swipe-track">
+            
+            <div class="view-panel-section">
+                <div class="section-title">All Dynamic Stream Feeds</div>
+                <div class="content-grid" id="grid-all"></div>
             </div>
-    </main>
+
+            <div class="view-panel-section">
+                <div class="section-title">Verified Long Length Videos</div>
+                <div class="content-grid" id="grid-video"></div>
+            </div>
+
+            <div class="view-panel-section">
+                <div class="section-title">Speed Shorts Feed</div>
+                <div class="content-grid" id="grid-short"></div>
+            </div>
+
+            <div class="view-panel-section">
+                <div class="section-title">Public Community Posts</div>
+                <div class="content-grid" id="grid-post"></div>
+            </div>
+
+        </div>
+    </div>
 
     <div class="modal-overlay" id="system-modal">
-        <div class="modal-box" id="modal-box-content">
-            </div>
+        <div class="modal-box" id="modal-box-content"></div>
     </div>
 
     <script>
-        // STRICT COMPREHENSIVE CRITICAL SECURITY VAULT
-        const SECURE_CREDENTIALS_CONTAINER = {
+        // STRICT RE-ENGINEERED FIREWALL DATA ENCLOSURE
+        const SECURITY_CREDENTIALS = {
             user: "ahsanullahkh@gmail.com",
             pass: "sirrehan786"
         };
 
         let currentActiveSession = false;
-        let activeFilterCategory = "all";
+        let activeTabIndex = 0;
         let activeUploadTargetType = "";
-        let dynamicLocalMemoryDB = []; // 100% Wiped out of any dummy content. Completely clean until user populates it.
+        let dynamicLocalMemoryDB = []; // Wiped clean. No static/dummy objects populated by default.
+
+        // TOUCH INTERACTION VECTOR DETECTORS
+        let touchStartCoordX = 0;
+        let touchEndCoordX = 0;
+        let touchStartCoordY = 0;
+        let touchEndCoordY = 0;
 
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -388,67 +420,106 @@
                     setTimeout(() => splash.remove(), 500);
                 }
             }, 1000);
-            rebuildDashboardView();
+            
+            rebuildStratifiedGrids();
+            setupTouchNavigationListeners();
         });
 
-        // RE-ENGINEERED RENDERING GRID CORE
-        function rebuildDashboardView() {
-            const grid = document.getElementById('master-feed-grid');
-            grid.innerHTML = '';
+        // RE-BUILT DYNAMIC CORE GRID DISPATCHER
+        function rebuildStratifiedGrids() {
+            const categories = ['all', 'video', 'short', 'post'];
+            
+            categories.forEach((cat) => {
+                const targetGrid = document.getElementById(`grid-${cat}`);
+                if (!targetGrid) return;
+                targetGrid.innerHTML = '';
 
-            let filteredDataSet = dynamicLocalMemoryDB.filter(item => {
-                if (activeFilterCategory === 'all') return true;
-                return item.type === activeFilterCategory;
-            });
+                let filtered = dynamicLocalMemoryDB.filter(item => {
+                    if (cat === 'all') return true;
+                    return item.type === cat;
+                });
 
-            // True Dynamic Empty State Condition
-            if (filteredDataSet.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state-container" style="grid-column: 1 / -1;">
-                        <div class="empty-icon">🔒</div>
-                        <div style="font-weight:800; font-size:18px; color:#111;">No Content Inside Feed</div>
-                        <div style="font-size:13px; margin-top:5px; color:#666;">This environment is highly secured. Upload content using authorized profiles to populate feeds.</div>
-                    </div>
-                `;
-                return;
-            }
-
-            filteredDataSet.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'media-card';
-                card.innerHTML = `
-                    <div class="media-preview-box">
-                        <span>${item.type.toUpperCase()} PREVIEW</span>
-                    </div>
-                    <div class="media-info">
-                        <div class="media-title">${escapeSecurityHTML(item.title)}</div>
-                        <div class="media-meta">Uploaded Safely By Verified User • Just Now</div>
-                    </div>
-                `;
-                grid.appendChild(card);
+                if (filtered.length === 0) {
+                    targetGrid.innerHTML = `
+                        <div class="empty-state-container">
+                            <div class="empty-icon">🔒</div>
+                            <div style="font-weight:800; font-size:18px; color:#111;">No Verified Content Found</div>
+                            <div style="font-size:13px; margin-top:5px; color:#666;">This interface module has been hard-wiped of dummy scripts. Authenticate profile to deploy custom streams.</div>
+                        </div>
+                    `;
+                } else {
+                    filtered.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'media-card';
+                        card.innerHTML = `
+                            <div class="media-preview-box">
+                                <span>${item.type.toUpperCase()} TRANSMISSION</span>
+                            </div>
+                            <div class="media-info">
+                                <div class="media-title">${escapeSecurityHTML(item.title)}</div>
+                                <div class="media-meta">Authorized Broadcast System • Live Track</div>
+                            </div>
+                        `;
+                        targetGrid.appendChild(card);
+                    });
+                }
             });
         }
 
         function escapeSecurityHTML(str) {
-            return str.replace(/[&<>'"]/g, 
-                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
-            );
+            return str.replace(/[&<>'"]/g, tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
         }
 
-        function switchFilterCategory(cat) {
-            activeFilterCategory = cat;
+        // TOUCH GESTURE COMPASS NAVIGATION CONTROLLER (LEFT / RIGHT CONTROL LAYER)
+        function setupTouchNavigationListeners() {
+            const viewArea = document.getElementById('swipe-area-viewport');
+
+            viewArea.addEventListener('touchstart', (e) => {
+                touchStartCoordX = e.changedTouches[0].screenX;
+                touchStartCoordY = e.changedTouches[0].screenY;
+            }, { passive: true });
+
+            viewArea.addEventListener('touchend', (e) => {
+                touchEndCoordX = e.changedTouches[0].screenX;
+                touchEndCoordY = e.changedTouches[0].screenY;
+                evaluateTouchMovementSwipe();
+            }, { passive: true });
+        }
+
+        function evaluateTouchMovementSwipe() {
+            const deltaX = touchEndCoordX - touchStartCoordX;
+            const deltaY = touchEndCoordY - touchStartCoordY;
+
+            // Ensure horizontal swipe intent dominates vertical scroll threshold
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 45) {
+                if (deltaX < 0) {
+                    // Swiped Left -> Move forward to right tab panel
+                    if (activeTabIndex < 3) jumpToTabSegment(activeTabIndex + 1);
+                } else {
+                    // Swiped Right -> Move backward to left tab panel
+                    if (activeTabIndex > 0) jumpToTabSegment(activeTabIndex - 1);
+                }
+            }
+        }
+
+        // CONTROL PIVOT FOR SHIFTING GRID PANELS WITH FLUID TRANSITION
+        function jumpToTabSegment(tabIdx) {
+            activeTabIndex = tabIdx;
+            const track = document.getElementById('swipe-track');
+            track.style.transform = `translateX(-${tabIdx * 100}vw)`;
+
+            // Sync visual highlights on pill badges
+            const tabsArr = ['all', 'video', 'short', 'post'];
             const pills = document.getElementsByClassName('filter-pill');
-            for(let p of pills) p.classList.remove('active');
+            for (let p of pills) p.classList.remove('active');
             
-            document.getElementById(`pill-${cat}`).classList.add('active');
-            document.getElementById('main-feed-title').innerText = `Viewing: ${cat.toUpperCase()}`;
-            rebuildDashboardView();
+            document.getElementById(`pill-${tabsArr[tabIdx]}`).classList.add('active');
         }
 
         function triggerUploadModal(targetType) {
             activeUploadTargetType = targetType;
             if (!currentActiveSession) {
-                renderAuthLayout("Verification needed to publish secure transmission streams.");
+                renderAuthLayout("Identity authorization needed to run secure content deployments.");
             } else {
                 renderUploadLayout();
             }
@@ -457,14 +528,14 @@
 
         function toggleProfileControl() {
             if (!currentActiveSession) {
-                renderAuthLayout("Access Restricted Command Core Workspace Studio Terminal.");
+                renderAuthLayout("Root security verification is required to load system studio metrics.");
             } else {
                 renderProfilePanelLayout();
             }
             document.getElementById('system-modal').style.display = 'flex';
         }
 
-        // RE-DESIGNED INTERACTIVE VERIFICATION SYSTEM WITH STATUS FEEDBACK SIGNS
+        // SECURE SYSTEM LOG ARCHITECTURE WITH HIGH PERFORMANCE VALIDATION CONTROLS
         function renderAuthLayout(statusMessageText) {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
@@ -472,20 +543,20 @@
                 <p style="font-size:13px; text-align:center; color:#555; margin-bottom:20px;">${statusMessageText}</p>
                 
                 <button class="google-auth-btn" onclick="executeGoogleAccountLink()">
-                    <svg class="google-icon" viewBox="0 0 24 24">
+                    <svg style="width:18px; height:18px;" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.92h6.61c-.29 1.53-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-8.58z"/>
                         <path fill="#34A853" d="M12 24c3.24 0 5.97-1.08 7.96-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.08 1.16-3.14 0-5.8-2.11-6.75-4.96H1.31v3.15C3.29 22.35 7.39 24 12 24z"/>
                         <path fill="#FBBC05" d="M5.25 14.24A7.18 7.18 0 0 1 5 12c0-.79.13-1.57.38-2.31V6.54H1.31A11.94 11.94 0 0 0 0 12c0 1.92.45 3.74 1.31 5.46l3.94-3.22z"/>
                         <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.39 0 3.29 1.65 1.31 4.75l3.94 3.15c.95-2.85 3.61-4.96 6.75-4.96z"/>
                     </svg>
-                    Connect with Google Account
+                    <span>Connect with Google Account</span>
                 </button>
 
-                <div class="divider">or standard key access</div>
+                <div class="divider">or use standard credentials</div>
 
                 <div class="input-group">
-                    <label class="input-label">Secure Workspace Email</label>
-                    <input type="email" id="auth-email-field" class="form-control" placeholder="username@domain.com">
+                    <label class="input-label">Secure Login Email</label>
+                    <input type="email" id="auth-email-field" class="form-control" placeholder="name@domain.com">
                 </div>
                 <div class="input-group">
                     <label class="input-label">Core Matrix Password</label>
@@ -496,13 +567,12 @@
                 <div class="status-box status-success" id="box-status-success">✅ Login Successful! Entering Platform...</div>
 
                 <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Cancel Gateway</button>
+                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Cancel</button>
                     <button class="btn-block btn-submit" onclick="executeSecureAuthentication()">Validate Log</button>
                 </div>
             `;
         }
 
-        // GOOGLE INTEGRITY ACCOUNT POPUP SIMULATOR 
         function executeGoogleAccountLink() {
             alert("Connecting safely via Google Security Auth Matrix Protocol...");
             currentActiveSession = true;
@@ -513,7 +583,7 @@
             }
         }
 
-        // RIGID STRICT INPUT LOGIC GATE WITH STATUS RENDERS (PREVENTS BYPASS FAULTS)
+        // CRITICAL STRICT ACCESS CONTROL INTERCEPT MATRIX
         function executeSecureAuthentication() {
             const emailIn = document.getElementById('auth-email-field').value.trim();
             const passIn = document.getElementById('auth-pass-field').value;
@@ -521,14 +591,12 @@
             const errBox = document.getElementById('box-status-error');
             const successBox = document.getElementById('box-status-success');
 
-            // Hard Reset Displays
             errBox.style.display = 'none';
             successBox.style.display = 'none';
 
-            // SECURE STRICT CONDITIONAL INTERCEPT MATRIX
-            if (emailIn === SECURE_CREDENTIALS_CONTAINER.user && passIn === SECURE_CREDENTIALS_CONTAINER.pass) {
+            if (emailIn === SECURITY_CREDENTIALS.user && passIn === SECURITY_CREDENTIALS.pass) {
                 currentActiveSession = true;
-                successBox.style.display = 'block'; // Show Green Tick Box
+                successBox.style.display = 'block'; // Shows Green Verification Box
                 
                 setTimeout(() => {
                     if (activeUploadTargetType !== "") {
@@ -539,23 +607,23 @@
                 }, 800);
             } else {
                 currentActiveSession = false;
-                errBox.style.display = 'block'; // Show Red Cross Box
-                document.getElementById('auth-pass-field').value = ''; // Flush exploit injection buffer
+                errBox.style.display = 'block'; // Shows Red Access Denied Box
+                document.getElementById('auth-pass-field').value = ''; // Flush exploit buffer injection
             }
         }
 
         function renderUploadLayout() {
             const container = document.getElementById('modal-box-content');
             container.innerHTML = `
-                <div class="modal-header">Publish ${activeUploadTargetType.toUpperCase()} Stream</div>
+                <div class="modal-header">Deploy Asset Stream</div>
                 <div class="input-group">
-                    <label class="input-label">Title Heading Description</label>
-                    <input type="text" id="upload-title-field" class="form-control" placeholder="Type verified content text title...">
-                    <div class="status-box status-error" id="upload-error-block" style="display:none; margin-top:5px; padding:6px;">Title field must contain alphanumeric parameters!</div>
+                    <label class="input-label">Broadcast Custom Title</label>
+                    <input type="text" id="upload-title-field" class="form-control" placeholder="Type alphanumeric title heading...">
+                    <div class="status-box status-error" id="upload-error-block" style="display:none; margin-top:5px; padding:6px;">Data input parameters are empty!</div>
                 </div>
                 <div class="modal-actions">
-                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Discard Asset</button>
-                    <button class="btn-block btn-submit" onclick="executeSecureContentUpload()">Publish Feed Live</button>
+                    <button class="btn-block btn-cancel" onclick="closeSystemModal()">Discard</button>
+                    <button class="btn-block btn-submit" onclick="executeSecureContentUpload()">Publish Live</button>
                 </div>
             `;
         }
@@ -577,7 +645,7 @@
 
             activeUploadTargetType = "";
             closeSystemModal();
-            rebuildDashboardView();
+            rebuildStratifiedGrids();
         }
 
         function renderProfilePanelLayout() {
@@ -587,7 +655,7 @@
                 <div style="text-align:center; padding:10px 0;">
                     <div style="width:70px; height:70px; background:#ff0055; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:900; margin:0 auto 10px;">RS</div>
                     <div style="font-weight:800; font-size:16px;">REHAN SIR</div>
-                    <div style="font-size:12px; color:#666;">${SECURE_CREDENTIALS_CONTAINER.user}</div>
+                    <div style="font-size:12px; color:#666;">${SECURITY_CREDENTIALS.user}</div>
                     <div style="margin-top:10px; background:#e6f9ed; color:#1e7e34; padding:5px 12px; border-radius:15px; font-size:11px; font-weight:700; display:inline-block;">✓ Firewall Integrity Active: +∞ Ultra</div>
                 </div>
                 <div class="modal-actions">
@@ -608,7 +676,7 @@
             activeUploadTargetType = "";
         }
 
-        // HARD DEVTOOL DISCO INTERCEPT LAYER
+        // RIGID BLOCK INLINE DEVTOOLS COMMAND TAMPER PROTECTION LAYER
         window.addEventListener('keydown', function (e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67))) {
                 e.preventDefault();
