@@ -585,7 +585,7 @@
                             <div class="info-holder">
                                 <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
                                 <div class="v-meta-text">By ${item.creator}</div>
-                                <div class="v-views-text">${item.views || 0} views • Long Video</div>
+                                <div class="v-views-text">${item.views || 0} views Â• Long Video</div>
                                 ${interactionRow}
                                 ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
@@ -604,7 +604,7 @@
                             <div class="info-holder">
                                 <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
                                 <div class="v-meta-text">By ${item.creator}</div>
-                                <div class="v-views-text">${item.views || 0} views • Short</div>
+                                <div class="v-views-text">${item.views || 0} views Â• Short</div>
                                 ${interactionRow}
                                 ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
@@ -620,7 +620,7 @@
                             <div class="img-holder" style="background-image:url('${item.poster}'); height:200px;"></div>
                             <div class="info-holder">
                                 <h3 class="v-title-text" id="title-node-${item.id}">${item.title}</h3>
-                                <div class="v-meta-text">By ${item.creator} • Community Post</div>
+                                <div class="v-meta-text">By ${item.creator} Â• Community Post</div>
                                 ${interactionRow}
                                 ${item.creator === MASTER_USER_NAME ? `<button class="dots-btn" onclick="openStudioActionsMenu(event, '${item.id}')">?</button>` : ''}
                                 <div class="dots-menu" id="actions-menu-${item.id}">
@@ -730,7 +730,7 @@
                             </div>
                             <div class="info-holder">
                                 <strong>${item.title}</strong>
-                                <div style="font-size:11px; color:#ff0055; margin-top:4px;">Type: ${item.type.toUpperCase()} • Mode: ${item.privacy}</div>
+                                <div style="font-size:11px; color:#ff0055; margin-top:4px;">Type: ${item.type.toUpperCase()} Â• Mode: ${item.privacy}</div>
                             </div>
                         </div>`;
                 }
@@ -794,7 +794,7 @@
             saveItemToIndexedDB(item);
             
             document.getElementById('l-title').innerText = item.title;
-            document.getElementById('l-meta').innerText = `Uploaded by: ${item.creator} • ${item.views} views`;
+            document.getElementById('l-meta').innerText = `Uploaded by: ${item.creator} Â• ${item.views} views`;
             
             const box = document.getElementById('long-media-container');
             box.innerHTML = `<video src="${item.url}" controls autoplay></video>`;
